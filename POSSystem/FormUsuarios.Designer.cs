@@ -156,7 +156,7 @@
             this.Usu_Rol,
             this.EstatusValor,
             this.Usu_Estatus});
-            this.dgvdata.Location = new System.Drawing.Point(303, 72);
+            this.dgvdata.Location = new System.Drawing.Point(293, 50);
             this.dgvdata.MinimumSize = new System.Drawing.Size(0, 28);
             this.dgvdata.MultiSelect = false;
             this.dgvdata.Name = "dgvdata";
@@ -164,7 +164,7 @@
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.White;
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
             this.dgvdata.RowsDefaultCellStyle = dataGridViewCellStyle2;
-            this.dgvdata.Size = new System.Drawing.Size(837, 429);
+            this.dgvdata.Size = new System.Drawing.Size(871, 461);
             this.dgvdata.TabIndex = 48;
             this.dgvdata.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvdata_CellContentClick);
             this.dgvdata.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.dgvdata_CellPainting);
@@ -446,7 +446,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1145, 511);
+            this.ClientSize = new System.Drawing.Size(1165, 511);
             this.Controls.Add(this.txtIndice);
             this.Controls.Add(this.txtBuscar);
             this.Controls.Add(this.boxBuscar);

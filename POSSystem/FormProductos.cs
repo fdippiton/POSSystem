@@ -18,6 +18,7 @@ namespace POSSystem
 {
     public partial class FormProductos : Form
     {
+        public int indice_combo_Cat;
         public FormProductos()
         {
             InitializeComponent();
@@ -40,7 +41,7 @@ namespace POSSystem
             cboCategoria.ValueMember = "Valor";
             cboCategoria.SelectedIndex = 0;
 
-            CargarDatos();
+            CargarProductos();
         }
 
         private void dgvdata_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
@@ -70,7 +71,7 @@ namespace POSSystem
             boxDescripcion.Text = "";
         }
 
-        private void CargarDatos()
+        private void CargarProductos()
         {
             BL_Producto blProducto = new BL_Producto();
             List<Producto> listaProductos = blProducto.ListarProductos(); // Asumiendo que existe un método ListarProductos que retorna una lista de productos
@@ -100,6 +101,7 @@ namespace POSSystem
                 producto.Prod_CodigoBarras,
                 producto.Prod_Barras,
                 producto.Prod_Nombre,
+                producto.oProd_Categoria_Id.Cat_Id,
                 producto.oProd_Categoria_Id.Cat_Nombre, // Asumiendo que el objeto Categoria tiene una propiedad Cat_Id
                 producto.Prod_Descripcion,
                 producto.Prod_Fecha
@@ -147,20 +149,8 @@ namespace POSSystem
             // Verificar si el producto fue agregado correctamente
             if (resultado)
             {
-                // Producto creado correctamente, actualizar el DataGridView
-                //dgvdata.Rows.Add(new object[] { "",
-                //nuevoProducto.Prod_Id,
-                //nuevoProducto.Prod_CodigoBarras,
-                //nuevoProducto.Prod_Barras,
-                //nuevoProducto.Prod_Nombre,
-                //((OpcionCombo) cboCategoria.SelectedItem).Valor.ToString(),
-                //nuevoProducto.Prod_Descripcion
-              
-                //nuevoProducto.Prod_Fecha
-      
-
                 MessageBox.Show("Producto creado correctamente.");
-                CargarDatos();
+                CargarProductos();
                 Limpiar();
             }
             else
@@ -174,17 +164,93 @@ namespace POSSystem
 
         private void btnEditar_Click(object sender, EventArgs e)
         {
+            // Crear el objeto producto con los datos del formulario
+            Producto productoEditado = new Producto
+            {
+                Prod_Id = Convert.ToInt32(textId.Text),
+                Prod_Nombre = boxNombre.Text,
+                Prod_Descripcion = boxDescripcion.Text,
+                oProd_Categoria_Id = new Categoria { Cat_Id = Convert.ToInt32(((OpcionCombo)cboCategoria.SelectedItem).Valor) },
+            };
 
+            // Instanciar la lógica de negocio y tratar de editar el producto
+            BL_Producto blProducto = new BL_Producto();
+            bool resultado = blProducto.EditarProducto(productoEditado);
+
+            // Verificar si el producto fue editado correctamente
+            if (resultado)
+            {
+                //// Actualizar la fila correspondiente en el DataGridView con los nuevos datos del usuario editado
+                //int indiceFila = dgvdata.CurrentRow.Index;
+                //dgvdata.Rows[indiceFila].Cells["Usu_Id"].Value = usuarioEditado.Usu_Id;
+                //dgvdata.Rows[indiceFila].Cells["Usu_Documento"].Value = usuarioEditado.Usu_Documento;
+                //dgvdata.Rows[indiceFila].Cells["Usu_NombreCompleto"].Value = usuarioEditado.Usu_NombreCompleto;
+                //dgvdata.Rows[indiceFila].Cells["Usu_Correo"].Value = usuarioEditado.Usu_Correo;
+                //dgvdata.Rows[indiceFila].Cells["Usu_Contrasena"].Value = usuarioEditado.Usu_Contrasena;
+                //dgvdata.Rows[indiceFila].Cells["Usu_Rol_Id"].Value = usuarioEditado.oRol_Id.Rol_Id;
+                //dgvdata.Rows[indiceFila].Cells["Usu_Rol"].Value = ((OpcionCombo)cborol.SelectedItem).Texto;
+                //dgvdata.Rows[indiceFila].Cells["EstatusValor"].Value = usuarioEditado.Usu_Estatus;
+                //dgvdata.Rows[indiceFila].Cells["Usu_Estatus"].Value = ((OpcionCombo)cboestatus.SelectedItem).Valor;
+
+                CargarProductos();
+                MessageBox.Show("Usuario editado correctamente.");
+                Limpiar();
+            }
+            else
+            {
+                // Hubo un error al editar el usuario
+                MessageBox.Show("Error al editar el usuario.");
+            }
         }
 
         private void btnEliminar_Click(object sender, EventArgs e)
         {
+            // Obtener el ID del producto a eliminar desde el DataGridView
+            int productoId = Convert.ToInt32(dgvdata.CurrentRow.Cells["Prod_Id"].Value);
 
+            // Instanciar la lógica de negocio y tratar de eliminar el producto
+            BL_Producto blProducto = new BL_Producto();
+            bool resultado = blProducto.EliminarProducto(productoId);
+
+            // Verificar si el producto fue eliminado correctamente
+            if (resultado)
+            {
+                // Eliminar la fila correspondiente en el DataGridView
+                dgvdata.Rows.RemoveAt(dgvdata.CurrentRow.Index);
+                Limpiar();
+
+                MessageBox.Show("Producto eliminado correctamente.");
+            }
+            else
+            {
+                // Hubo un error al eliminar el producto
+                MessageBox.Show("Error al eliminar el producto.");
+            }
         }
 
+        // Cargar los datos en los textBox
         private void dgvdata_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
+            if (dgvdata.Columns[e.ColumnIndex].Name == "btnSeleccionar")
+            {
+                int indice = e.RowIndex;
+                if (indice >= 0)
+                {
+                    textId.Text = dgvdata.Rows[indice].Cells["Prod_Id"].Value.ToString();
+                    boxNombre.Text = dgvdata.Rows[indice].Cells["Prod_Nombre"].Value.ToString();
+                    boxDescripcion.Text = dgvdata.Rows[indice].Cells["Prod_Descripcion"].Value.ToString();
 
+                    foreach (OpcionCombo oc in cboCategoria.Items)
+                    {
+                        if (oc.Valor.ToString() == dgvdata.Rows[indice].Cells["Prod_Categoria_Id"].Value.ToString())
+                        {
+                            indice_combo_Cat = cboCategoria.Items.IndexOf(oc);
+                            cboCategoria.SelectedIndex = indice_combo_Cat;
+                            break;
+                        }
+                    }
+                }
+            }
         }
     }
 }

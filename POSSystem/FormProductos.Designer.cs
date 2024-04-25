@@ -57,6 +57,7 @@
             this.Prod_CodigoBarras = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Prod_Barras = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Prod_Nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Prod_Categoria_Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Prod_Categoria = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Prod_Descripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Prod_Fecha = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -178,10 +179,11 @@
             this.Prod_CodigoBarras,
             this.Prod_Barras,
             this.Prod_Nombre,
+            this.Prod_Categoria_Id,
             this.Prod_Categoria,
             this.Prod_Descripcion,
             this.Prod_Fecha});
-            this.dgvdata.Location = new System.Drawing.Point(305, 72);
+            this.dgvdata.Location = new System.Drawing.Point(292, 51);
             this.dgvdata.MinimumSize = new System.Drawing.Size(0, 28);
             this.dgvdata.MultiSelect = false;
             this.dgvdata.Name = "dgvdata";
@@ -189,7 +191,7 @@
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.White;
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
             this.dgvdata.RowsDefaultCellStyle = dataGridViewCellStyle2;
-            this.dgvdata.Size = new System.Drawing.Size(837, 429);
+            this.dgvdata.Size = new System.Drawing.Size(872, 460);
             this.dgvdata.TabIndex = 71;
             this.dgvdata.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvdata_CellContentClick);
             this.dgvdata.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.dgvdata_CellPainting);
@@ -370,6 +372,13 @@
             this.Prod_Nombre.ReadOnly = true;
             this.Prod_Nombre.Width = 150;
             // 
+            // Prod_Categoria_Id
+            // 
+            this.Prod_Categoria_Id.HeaderText = "Categoria Id";
+            this.Prod_Categoria_Id.Name = "Prod_Categoria_Id";
+            this.Prod_Categoria_Id.ReadOnly = true;
+            this.Prod_Categoria_Id.Visible = false;
+            // 
             // Prod_Categoria
             // 
             this.Prod_Categoria.HeaderText = "Categoria";
@@ -393,7 +402,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1145, 511);
+            this.ClientSize = new System.Drawing.Size(1165, 511);
             this.Controls.Add(this.cboCategoria);
             this.Controls.Add(this.txtBuscar);
             this.Controls.Add(this.btnLimpiar);
@@ -454,6 +463,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Prod_CodigoBarras;
         private System.Windows.Forms.DataGridViewTextBoxColumn Prod_Barras;
         private System.Windows.Forms.DataGridViewTextBoxColumn Prod_Nombre;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Prod_Categoria_Id;
         private System.Windows.Forms.DataGridViewTextBoxColumn Prod_Categoria;
         private System.Windows.Forms.DataGridViewTextBoxColumn Prod_Descripcion;
         private System.Windows.Forms.DataGridViewTextBoxColumn Prod_Fecha;

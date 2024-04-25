@@ -21,5 +21,15 @@ namespace BusinessLayer
         {
             return objdl_Producto.CrearProducto(producto);
         }
+
+        public bool EditarProducto(Producto producto)
+        {
+            return objdl_Producto.EditarProducto(producto);
+        }
+
+        public bool EliminarProducto(int productoId)
+        {
+            return objdl_Producto.EliminarProducto(productoId);
+        }
     }
 }

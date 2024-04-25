@@ -190,5 +190,70 @@ namespace DataLayer
             return creadoExitosamente;
         }
 
+        public bool EditarProducto(Producto producto)
+        {
+            bool resultado = false;
+            using (SqlConnection conexion = new SqlConnection(Conexion.cadena))
+            {
+                try
+                {
+                    StringBuilder query = new StringBuilder();
+                    query.AppendLine("UPDATE Productos");
+                    query.AppendLine("SET Prod_Nombre = @Prod_Nombre,");
+                    query.AppendLine("    Prod_Descripcion = @Prod_Descripcion,");
+                    query.AppendLine("    Prod_Categoria_Id = @Prod_Categoria_Id");
+                    query.AppendLine("WHERE Prod_Id = @Prod_Id;");
+
+                    SqlCommand cmd = new SqlCommand(query.ToString(), conexion);
+                    cmd.Parameters.AddWithValue("@Prod_Nombre", producto.Prod_Nombre);
+                    cmd.Parameters.AddWithValue("@Prod_Descripcion", producto.Prod_Descripcion);
+                    cmd.Parameters.AddWithValue("@Prod_Categoria_Id", producto.oProd_Categoria_Id.Cat_Id);
+                    cmd.Parameters.AddWithValue("@Prod_Id", producto.Prod_Id);
+
+                    conexion.Open();
+                    int filasAfectadas = cmd.ExecuteNonQuery();
+                    if (filasAfectadas > 0)
+                        resultado = true;
+                }
+                catch (Exception ex)
+                {
+                    // Manejo de errores
+                    Console.WriteLine("Error al editar el producto: " + ex.Message);
+                    resultado = false;
+                }
+            }
+            return resultado;
+        }
+
+
+        public bool EliminarProducto(int productoId)
+        {
+            bool resultado = false;
+            using (SqlConnection conexion = new SqlConnection(Conexion.cadena))
+            {
+                try
+                {
+                    StringBuilder query = new StringBuilder();
+                    query.AppendLine("DELETE FROM Productos");
+                    query.AppendLine("WHERE Prod_Id = @Prod_Id;");
+
+                    SqlCommand cmd = new SqlCommand(query.ToString(), conexion);
+                    cmd.Parameters.AddWithValue("@Prod_Id", productoId);
+
+                    conexion.Open();
+                    int filasAfectadas = cmd.ExecuteNonQuery();
+                    if (filasAfectadas > 0)
+                        resultado = true;
+                }
+                catch (Exception ex)
+                {
+                    // Manejo de errores
+                    Console.WriteLine("Error al eliminar el producto: " + ex.Message);
+                    resultado = false;
+                }
+            }
+            return resultado;
+        }
+
     }
 }

@@ -48,6 +48,7 @@
             this.menuReportes = new FontAwesome.Sharp.IconMenuItem();
             this.menuAcercaDe = new FontAwesome.Sharp.IconMenuItem();
             this.menuTitulo = new System.Windows.Forms.MenuStrip();
+            this.SubMenuImprimirCodigo = new System.Windows.Forms.ToolStripMenuItem();
             this.menu.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -56,7 +57,7 @@
             this.UsuarioActual.AutoSize = true;
             this.UsuarioActual.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.UsuarioActual.ForeColor = System.Drawing.SystemColors.Window;
-            this.UsuarioActual.Location = new System.Drawing.Point(788, 17);
+            this.UsuarioActual.Location = new System.Drawing.Point(943, 17);
             this.UsuarioActual.Name = "UsuarioActual";
             this.UsuarioActual.Size = new System.Drawing.Size(43, 13);
             this.UsuarioActual.TabIndex = 11;
@@ -67,7 +68,7 @@
             this.UsuarioTitulo.AutoSize = true;
             this.UsuarioTitulo.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.UsuarioTitulo.ForeColor = System.Drawing.SystemColors.Window;
-            this.UsuarioTitulo.Location = new System.Drawing.Point(733, 17);
+            this.UsuarioTitulo.Location = new System.Drawing.Point(888, 17);
             this.UsuarioTitulo.Name = "UsuarioTitulo";
             this.UsuarioTitulo.Size = new System.Drawing.Size(49, 13);
             this.UsuarioTitulo.TabIndex = 10;
@@ -151,7 +152,8 @@
             // 
             this.menuMantenedor.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.SubmenuCategoria,
-            this.SubMenuProducto});
+            this.SubMenuProducto,
+            this.SubMenuImprimirCodigo});
             this.menuMantenedor.IconChar = FontAwesome.Sharp.IconChar.Tools;
             this.menuMantenedor.IconColor = System.Drawing.Color.Black;
             this.menuMantenedor.IconFont = FontAwesome.Sharp.IconFont.Auto;
@@ -235,7 +237,7 @@
             this.SubmenuRegistrarCompra.IconColor = System.Drawing.Color.Black;
             this.SubmenuRegistrarCompra.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.SubmenuRegistrarCompra.Name = "SubmenuRegistrarCompra";
-            this.SubmenuRegistrarCompra.Size = new System.Drawing.Size(180, 22);
+            this.SubmenuRegistrarCompra.Size = new System.Drawing.Size(164, 22);
             this.SubmenuRegistrarCompra.Text = "Registrar compra";
             this.SubmenuRegistrarCompra.Click += new System.EventHandler(this.SubmenuRegistrarCompra_Click);
             // 
@@ -245,7 +247,7 @@
             this.SubmenuVerDetalleCompra.IconColor = System.Drawing.Color.Black;
             this.SubmenuVerDetalleCompra.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.SubmenuVerDetalleCompra.Name = "SubmenuVerDetalleCompra";
-            this.SubmenuVerDetalleCompra.Size = new System.Drawing.Size(180, 22);
+            this.SubmenuVerDetalleCompra.Size = new System.Drawing.Size(164, 22);
             this.SubmenuVerDetalleCompra.Text = "Ver detalle";
             this.SubmenuVerDetalleCompra.Click += new System.EventHandler(this.SubmenuVerDetalleCompra_Click);
             // 
@@ -283,6 +285,12 @@
             this.menuTitulo.Size = new System.Drawing.Size(1181, 48);
             this.menuTitulo.TabIndex = 7;
             this.menuTitulo.Text = "menuStrip2";
+            // 
+            // SubMenuImprimirCodigo
+            // 
+            this.SubMenuImprimirCodigo.Name = "SubMenuImprimirCodigo";
+            this.SubMenuImprimirCodigo.Size = new System.Drawing.Size(180, 22);
+            this.SubMenuImprimirCodigo.Text = "Imprimir codigos";
             // 
             // Inicio
             // 
@@ -327,6 +335,7 @@
         private FontAwesome.Sharp.IconMenuItem menuReportes;
         private FontAwesome.Sharp.IconMenuItem menuAcercaDe;
         private System.Windows.Forms.MenuStrip menuTitulo;
+        private System.Windows.Forms.ToolStripMenuItem SubMenuImprimirCodigo;
     }
 }
 

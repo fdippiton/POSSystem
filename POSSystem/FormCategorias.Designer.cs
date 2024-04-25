@@ -172,7 +172,7 @@
             this.Cat_Nombre,
             this.EstatusValor,
             this.Cat_Estatus});
-            this.dgvdata.Location = new System.Drawing.Point(305, 71);
+            this.dgvdata.Location = new System.Drawing.Point(292, 50);
             this.dgvdata.MinimumSize = new System.Drawing.Size(0, 28);
             this.dgvdata.MultiSelect = false;
             this.dgvdata.Name = "dgvdata";
@@ -180,7 +180,7 @@
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.White;
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
             this.dgvdata.RowsDefaultCellStyle = dataGridViewCellStyle2;
-            this.dgvdata.Size = new System.Drawing.Size(837, 429);
+            this.dgvdata.Size = new System.Drawing.Size(872, 541);
             this.dgvdata.TabIndex = 97;
             this.dgvdata.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvdata_CellContentClick);
             this.dgvdata.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.dgvdata_CellPainting);
@@ -324,7 +324,7 @@
             this.label2.Dock = System.Windows.Forms.DockStyle.Left;
             this.label2.Location = new System.Drawing.Point(0, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(291, 511);
+            this.label2.Size = new System.Drawing.Size(291, 591);
             this.label2.TabIndex = 89;
             // 
             // label1
@@ -339,7 +339,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1145, 511);
+            this.ClientSize = new System.Drawing.Size(1165, 591);
             this.Controls.Add(this.txtId);
             this.Controls.Add(this.cboEstatus);
             this.Controls.Add(this.txtBuscar);

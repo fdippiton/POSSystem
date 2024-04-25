@@ -22,6 +22,20 @@ namespace POSSystem
             InitializeComponent();
         }
 
+        private void CargarUsuarios()
+        {
+            BL_Usuario blUsuario = new BL_Usuario();
+            List<Usuario> listaUsuarios = blUsuario.Listar(); // Asumiendo que existe un método Listar que retorna una lista de usuarios
+
+            dgvdata.Rows.Clear(); // Limpiar las filas existentes
+
+            foreach (var usuario in listaUsuarios)
+            {
+                dgvdata.Rows.Add(new object[] { "", usuario.Usu_Id, usuario.Usu_Documento, usuario.Usu_NombreCompleto, usuario.Usu_Correo, usuario.Usu_Contrasena,
+                usuario.oRol_Id.Rol_Id, usuario.oRol_Id.Rol_Descripcion, usuario.Usu_Estatus, usuario.Usu_Estatus });
+            }
+        }
+
         private void FormUsuarios_Load(object sender, EventArgs e)
         {
             // Agrega un nuevo elemento al ComboBox cboestatus. Este nuevo elemento es una instancia de la clase OpcionCombo con el valor "A" y el texto "Activo"
@@ -75,39 +89,7 @@ namespace POSSystem
             cboBuscar.SelectedIndex = 0;
 
 
-
-            // Listar todos los usuarios en el dataGrid
-            List<Usuario> listaUsuarios = new BL_Usuario().Listar();
-
-            foreach (Usuario usuario in listaUsuarios)
-            {
-                dgvdata.Rows.Add(new object[] { "",
-                usuario.Usu_Id,
-                usuario.Usu_Documento,
-                usuario.Usu_NombreCompleto,
-                usuario.Usu_Correo,
-                usuario.Usu_Contrasena,
-                usuario.oRol_Id.Rol_Id,
-                usuario.oRol_Id.Rol_Descripcion,
-                usuario.Usu_Estatus,
-                usuario.Usu_Estatus
-                });
-
-            }
-        }
-
-        private void CargarDatos()
-        {
-            BL_Usuario blUsuario = new BL_Usuario();
-            List<Usuario> listaUsuarios = blUsuario.Listar(); // Asumiendo que existe un método Listar que retorna una lista de usuarios
-
-            dgvdata.Rows.Clear(); // Limpiar las filas existentes
-
-            foreach (var usuario in listaUsuarios)
-            {
-                dgvdata.Rows.Add(new object[] { "", usuario.Usu_Id, usuario.Usu_Documento, usuario.Usu_NombreCompleto, usuario.Usu_Correo, usuario.Usu_Contrasena,
-                usuario.oRol_Id.Rol_Id, usuario.oRol_Id.Rol_Descripcion, usuario.Usu_Estatus, usuario.Usu_Estatus });
-            }
+            CargarUsuarios();
         }
 
 
@@ -176,6 +158,7 @@ namespace POSSystem
 
             // Verificar si ya existe un usuario con el mismo documento
             bool documentoExistente = blUsuario.VerificarDocumentoExistente(nuevoUsuario.Usu_Documento);
+
             if (documentoExistente)
             {
                 MessageBox.Show("Ya existe un usuario con el mismo documento.");
@@ -189,21 +172,8 @@ namespace POSSystem
                 // Verificar si el usuario fue agregado correctamente
                 if (resultado)
                 {
-                    // Usuario creado correctamente, actualizar el DataGridView
-                    dgvdata.Rows.Add(new object[] { "",
-                    nuevoUsuario.Usu_Id,
-                    nuevoUsuario.Usu_Documento,
-                    nuevoUsuario.Usu_NombreCompleto,
-                    nuevoUsuario.Usu_Correo,
-                    nuevoUsuario.Usu_Contrasena,
-                    ((OpcionCombo) cborol.SelectedItem).Valor.ToString(),
-                    ((OpcionCombo) cborol.SelectedItem).Texto.ToString(),
-                    ((OpcionCombo) cboestatus.SelectedItem).Texto.ToString(),
-                    ((OpcionCombo) cboestatus.SelectedItem).Valor.ToString()
-                });
-
                     MessageBox.Show("Usuario creado correctamente.");
-                    CargarDatos();
+                    CargarUsuarios();
                     Limpiar();
                 }
                 else
@@ -213,9 +183,9 @@ namespace POSSystem
                 }
 
             }
-
             Limpiar();
         }
+
 
         private void btnEditar_Click(object sender, EventArgs e)
         {
@@ -284,10 +254,9 @@ namespace POSSystem
                 // Hubo un error al eliminar el usuario
                 MessageBox.Show("Error al eliminar el usuario.");
             }
-
-
         }
 
+        // Cargar los datos en los textBox
         private void dgvdata_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             if (dgvdata.Columns[e.ColumnIndex].Name == "btnSeleccionar")

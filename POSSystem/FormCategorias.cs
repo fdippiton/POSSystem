@@ -96,6 +96,7 @@ namespace POSSystem
         {
             // Limpiar o resetear los controles del formulario
             boxNombre.Text = "";
+            txtId.Text = "";
         }
 
 
