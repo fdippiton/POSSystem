@@ -1,0 +1,42 @@
+# Visual Studio files
+.vs/
+*.suo
+*.user
+*.sln.docstates
+*.vscode/
+*.vsconfig
+
+# Build results
+/bin/
+/obj/
+*.exe
+*.pdb
+*.dll
+*.manifest
+*.res
+
+# Resharper
+_ReSharper*/
+
+# NuGet Packages
+/packages/
+*.nupkg
+
+# Visual Studio Code
+.vscode/
+
+# User-specific files
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Logs and databases
+*.sqlite
+*.sqlite3
+*.db
+*.sqlitedb
+
+# Build results
+[Bb]in/
+[Oo]bj/
