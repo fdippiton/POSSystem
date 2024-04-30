@@ -11,14 +11,17 @@ namespace EntityLayer
     [Table("Productos")]
     public class Producto
     {
-        [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int Prod_Id { get; set; }
+        //[Key]
+        //[DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        //public int Prod_Id { get; set; }
 
-        [Required]
-        [StringLength(30)]
+        //[Required]
+        //[StringLength(30)]
+        [Key]
         public string Prod_CodigoBarras { get; set; }
 
+        [Required]
+        [MaxLength]
         public string Prod_Barras { get; set; }
 
         [Required]
@@ -30,9 +33,29 @@ namespace EntityLayer
         [Required]
         public Categoria oProd_Categoria_Id { get; set; }
 
-        public int? Prod_Itbis { get; set; }
+       
+        public DateTime Prod_Fecha { get; set; }
 
         [Required]
-        public DateTime Prod_Fecha { get; set; }
+        public int Prod_StockInicial { get; set; }
+
+        [Required]
+        public int Prod_StockActual { get; set; }
+
+        [Required]
+        public decimal Prod_PrecioCompra { get; set; }
+
+        [Required]
+        public decimal Prod_PrecioVenta { get; set; }
+
+        [Required]
+        public decimal Prod_ValorInventarioInicial { get; set; }
+
+        [Required]
+        public decimal Prod_ValorInventarioActual { get; set; }
+
+        [Required]
+        [StringLength(1)]
+        public string Prod_Estatus { get; set; }
     }
 }

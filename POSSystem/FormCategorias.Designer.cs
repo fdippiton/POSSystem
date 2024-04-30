@@ -180,7 +180,7 @@
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.White;
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
             this.dgvdata.RowsDefaultCellStyle = dataGridViewCellStyle2;
-            this.dgvdata.Size = new System.Drawing.Size(872, 541);
+            this.dgvdata.Size = new System.Drawing.Size(889, 541);
             this.dgvdata.TabIndex = 97;
             this.dgvdata.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvdata_CellContentClick);
             this.dgvdata.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.dgvdata_CellPainting);
@@ -339,7 +339,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1165, 591);
+            this.ClientSize = new System.Drawing.Size(1181, 591);
             this.Controls.Add(this.txtId);
             this.Controls.Add(this.cboEstatus);
             this.Controls.Add(this.txtBuscar);

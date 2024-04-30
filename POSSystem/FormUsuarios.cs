@@ -9,6 +9,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Documents;
 using System.Windows.Forms;
 
 namespace POSSystem
@@ -17,6 +18,8 @@ namespace POSSystem
     {
         public int indice_combo_rol;
         public int indice_combo_estatus;
+        private bool seleccionado = true; // Cambiado a true
+        private int rowIndexSelected = -1;
         public FormUsuarios()
         {
             InitializeComponent();
@@ -93,7 +96,7 @@ namespace POSSystem
         }
 
 
-        private void Limpiar()
+        private void LimpiarCampos()
         {
             txtIndice.Text = "-1";
             textId.Text = "0";
@@ -104,27 +107,6 @@ namespace POSSystem
             boxconfirmarcontrasena.Text = "";
             cborol.SelectedItem = 0;
             cboestatus.SelectedItem = 0;
-        }
-
-
-        private void dgvdata_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
-        {
-            // Para que no considere la primera fila, ya que es la cabecera
-            if (e.RowIndex < 0) { return; }
-
-            if (e.ColumnIndex == 0)
-            {
-                // Para que considere todos los limites de la celda
-                e.Paint(e.CellBounds, DataGridViewPaintParts.All);
-
-                var w = Properties.Resources.tick_symbol_icon15.Width;
-                var h = Properties.Resources.tick_symbol_icon15.Height;
-                var x = e.CellBounds.Left + (e.CellBounds.Width - w) / 2;
-                var y = e.CellBounds.Top + (e.CellBounds.Height - h) / 2;
-
-                e.Graphics.DrawImage(Properties.Resources.tick_symbol_icon15, new Rectangle(x, y, w, h));
-                e.Handled = true;
-            }
         }
 
 
@@ -162,7 +144,7 @@ namespace POSSystem
             if (documentoExistente)
             {
                 MessageBox.Show("Ya existe un usuario con el mismo documento.");
-                Limpiar();
+                LimpiarCampos();
                 return; // Detener la ejecución si existe ya un documento similar
             }
             else
@@ -174,7 +156,7 @@ namespace POSSystem
                 {
                     MessageBox.Show("Usuario creado correctamente.");
                     CargarUsuarios();
-                    Limpiar();
+                    LimpiarCampos();
                 }
                 else
                 {
@@ -183,7 +165,7 @@ namespace POSSystem
                 }
 
             }
-            Limpiar();
+            LimpiarCampos();
         }
 
 
@@ -222,7 +204,7 @@ namespace POSSystem
 
 
                 MessageBox.Show("Usuario editado correctamente.");
-                Limpiar();
+                LimpiarCampos();
             }
             else
             {
@@ -245,7 +227,7 @@ namespace POSSystem
             {
                 // Eliminar la fila correspondiente en el DataGridView
                 dgvdata.Rows.RemoveAt(dgvdata.CurrentRow.Index);
-                Limpiar();
+                LimpiarCampos();
 
                 MessageBox.Show("Usuario eliminado correctamente.");
             }
@@ -256,39 +238,109 @@ namespace POSSystem
             }
         }
 
-        // Cargar los datos en los textBox
+        private void PintarIconoTickEnTodasLasCeldas()
+        {
+            foreach (DataGridViewRow row in dgvdata.Rows)
+            {
+                // Si la fila no está seleccionada, pinta el ícono del tick en la celda
+                if (row.Index != rowIndexSelected)
+                {
+                    dgvdata.InvalidateCell(0, row.Index);
+                }
+            }
+        }
+
+        private void dgvdata_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
+        {
+            if (e.ColumnIndex == 0 && e.RowIndex >= 0)
+            {
+                e.Paint(e.CellBounds, DataGridViewPaintParts.All);
+
+                Image icono = Properties.Resources.tick_symbol_icon15;
+
+                if (e.RowIndex == rowIndexSelected && seleccionado)
+                {
+                    icono = Properties.Resources.close_icon15;
+                }
+
+                var w = icono.Width;
+                var h = icono.Height;
+                var x = e.CellBounds.Left + (e.CellBounds.Width - w) / 2;
+                var y = e.CellBounds.Top + (e.CellBounds.Height - h) / 2;
+
+                e.Graphics.DrawImage(icono, new Rectangle(x, y, w, h));
+                e.Handled = true;
+            }
+        }
+
         private void dgvdata_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (dgvdata.Columns[e.ColumnIndex].Name == "btnSeleccionar")
+            if (e.RowIndex >= 0 && e.ColumnIndex == 0)
             {
-                int indice = e.RowIndex;
-                if (indice >= 0)
+                // Verifica si la fila seleccionada ya coincide con la fila seleccionada anteriormente
+                if (e.RowIndex == rowIndexSelected)
                 {
-                    txtIndice.Text = indice.ToString();
-                    textId.Text = dgvdata.Rows[indice].Cells["Usu_Id"].Value.ToString();
-                    boxdocumento.Text = dgvdata.Rows[indice].Cells["Usu_Documento"].Value.ToString();
-                    boxnombrecompleto.Text = dgvdata.Rows[indice].Cells["Usu_NombreCompleto"].Value.ToString();
-                    boxcorreo.Text = dgvdata.Rows[indice].Cells["Usu_Correo"].Value.ToString();
-                    boxcontrasena.Text = dgvdata.Rows[indice].Cells["Usu_Contrasena"].Value.ToString();
-                    boxconfirmarcontrasena.Text = dgvdata.Rows[indice].Cells["Usu_Contrasena"].Value.ToString();
-
-                    foreach (OpcionCombo oc in cborol.Items)
+                    // Si es así, deselecciona la fila y limpia los campos
+                    LimpiarCampos();
+                    dgvdata.InvalidateCell(0, rowIndexSelected);
+                    rowIndexSelected = -1; // Establece rowIndexSelected a -1 para indicar que no hay fila seleccionada
+                    seleccionado = false;
+                }
+                else
+                {
+                    // Si la fila seleccionada es diferente a la fila seleccionada anteriormente
+                    if (seleccionado)
                     {
-                        if (Convert.ToInt32(oc.Valor) == Convert.ToInt32(dgvdata.Rows[indice].Cells["Usu_Rol_Id"].Value))
-                        {
-                            indice_combo_rol = cborol.Items.IndexOf(oc);
-                            cborol.SelectedIndex = indice_combo_rol;
-                            break;
-                        }
+                        // Limpia los campos y deselecciona la fila anteriormente seleccionada
+                        LimpiarCampos();
+                        dgvdata.InvalidateCell(0, rowIndexSelected);
                     }
 
-                    foreach (OpcionCombo os in cboestatus.Items)
+                    // Actualiza rowIndexSelected y marca la fila como seleccionada
+                    rowIndexSelected = e.RowIndex;
+                    seleccionado = true;
+
+                    // Carga los datos de la fila seleccionada en los campos
+                    CargarDatosFilaSeleccionada();
+
+                    // Actualiza la apariencia de la celda del botón
+                    dgvdata.InvalidateCell(0, e.RowIndex);
+                }
+
+                // Pinta el ícono del tick en todas las demás celdas
+                PintarIconoTickEnTodasLasCeldas();
+            }
+        }
+
+        private void CargarDatosFilaSeleccionada()
+        {
+            int indice = rowIndexSelected;
+            if (indice >= 0)
+            {
+                txtIndice.Text = indice.ToString();
+                textId.Text = dgvdata.Rows[indice].Cells["Usu_Id"].Value.ToString();
+                boxdocumento.Text = dgvdata.Rows[indice].Cells["Usu_Documento"].Value.ToString();
+                boxnombrecompleto.Text = dgvdata.Rows[indice].Cells["Usu_NombreCompleto"].Value.ToString();
+                boxcorreo.Text = dgvdata.Rows[indice].Cells["Usu_Correo"].Value.ToString();
+                boxcontrasena.Text = dgvdata.Rows[indice].Cells["Usu_Contrasena"].Value.ToString();
+                boxconfirmarcontrasena.Text = dgvdata.Rows[indice].Cells["Usu_Contrasena"].Value.ToString();
+
+                foreach (OpcionCombo oc in cborol.Items)
+                {
+                    if (Convert.ToInt32(oc.Valor) == Convert.ToInt32(dgvdata.Rows[indice].Cells["Usu_Rol_Id"].Value))
                     {
-                        if (os.Valor.ToString() == dgvdata.Rows[indice].Cells["EstatusValor"].Value.ToString())
-                        {
-                            indice_combo_estatus = cboestatus.Items.IndexOf(os);
-                            cboestatus.SelectedIndex = indice_combo_estatus;
-                        }
+                        indice_combo_rol = cborol.Items.IndexOf(oc);
+                        cborol.SelectedIndex = indice_combo_rol;
+                        break;
+                    }
+                }
+
+                foreach (OpcionCombo os in cboestatus.Items)
+                {
+                    if (os.Valor.ToString() == dgvdata.Rows[indice].Cells["EstatusValor"].Value.ToString())
+                    {
+                        indice_combo_estatus = cboestatus.Items.IndexOf(os);
+                        cboestatus.SelectedIndex = indice_combo_estatus;
                     }
                 }
             }

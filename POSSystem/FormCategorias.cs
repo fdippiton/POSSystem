@@ -10,12 +10,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace POSSystem
 {
     public partial class FormCategorias : Form
     {
         public int indice_combo_estatus;
+        private bool seleccionado = true; // Cambiado a true
+        private int rowIndexSelected = -1;
 
         public FormCategorias()
         {
@@ -40,23 +43,6 @@ namespace POSSystem
             cboEstatus.ValueMember = "Valor"; // Establece la propiedad ValueMember del ComboBox cboestatus para que el valor seleccionado sea el valor definido en la propiedad Valor de la clase OpcionCombo.
             cboEstatus.SelectedIndex = 0; // Establece el índice seleccionado inicialmente en el ComboBox cboestatus como 0, lo que significa que el primer elemento en la lista desplegable será seleccionado por defecto.
 
-
-            //foreach (DataGridViewColumn columna in dgvdata.Columns)
-            //{
-            //    // Aquí se verifica si la columna actual es visible (Visible == true) y si su nombre no es "btnSeleccionar". Esto se hace para excluir una columna especial que probablemente no se desea incluir en el ComboBox (quizás una columna de botón de selección).
-            //    if (columna.Visible == true && columna.Name != "btnSeleccionar")
-            //    {
-            //        // Para cada columna visible que pase la condición anterior, se agrega un nuevo elemento al ComboBox cboBuscar. Este nuevo elemento es una instancia de la clase OpcionCombo, donde el valor es el nombre de la columna (columna.Name) y el texto es el encabezado de la columna (columna.HeaderText).
-            //        cboBuscar.Items.Add(new OpcionCombo() { Valor = columna.Name, Texto = columna.HeaderText });
-            //    }
-            //}
-
-            //cboBuscar.DisplayMember = "Texto";
-            //cboBuscar.ValueMember = "Valor";
-            //cboBuscar.SelectedIndex = 0;
-
-
-
             // Listar todos los usuarios en el dataGrid
             List<Categoria> listaCategorias = new BL_Categoria().ListarCategorias();
 
@@ -72,31 +58,12 @@ namespace POSSystem
             }
         }
 
-        private void dgvdata_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
-        {
-            // Para que no considere la primera fila, ya que es la cabecera
-            if (e.RowIndex < 0) { return; }
-
-            if (e.ColumnIndex == 0)
-            {
-                // Para que considere todos los limites de la celda
-                e.Paint(e.CellBounds, DataGridViewPaintParts.All);
-
-                var w = Properties.Resources.tick_symbol_icon15.Width;
-                var h = Properties.Resources.tick_symbol_icon15.Height;
-                var x = e.CellBounds.Left + (e.CellBounds.Width - w) / 2;
-                var y = e.CellBounds.Top + (e.CellBounds.Height - h) / 2;
-
-                e.Graphics.DrawImage(Properties.Resources.tick_symbol_icon15, new Rectangle(x, y, w, h));
-                e.Handled = true;
-            }
-        }
-
         private void Limpiar()
         {
             // Limpiar o resetear los controles del formulario
+            txtId.Text = "0";
             boxNombre.Text = "";
-            txtId.Text = "";
+            cboEstatus.SelectedItem = 0;
         }
 
 
@@ -147,6 +114,7 @@ namespace POSSystem
             if (resultado)
             {
                 MessageBox.Show("Categoría creada correctamente.");
+                seleccionado = false;
                 CargarDatos(); // Actualizar la lista o el DataGridView con los datos actualizados
                 Limpiar();     // Limpiar los campos del formulario
             }
@@ -180,6 +148,10 @@ namespace POSSystem
                 dgvdata.Rows[indiceFila].Cells["Cat_Nombre"].Value = categoriaEditada.Cat_Nombre;
                 dgvdata.Rows[indiceFila].Cells["Cat_Estatus"].Value = categoriaEditada.Cat_Estatus;
 
+                seleccionado = false;
+                CargarDatos();
+
+
                 MessageBox.Show("Categoría editada correctamente.");
                 Limpiar();
             }
@@ -204,6 +176,7 @@ namespace POSSystem
             {
                 // Eliminar la fila correspondiente en el DataGridView
                 dgvdata.Rows.RemoveAt(dgvdata.CurrentRow.Index);
+                seleccionado = false;
                 Limpiar();
                 MessageBox.Show("Categoría eliminada correctamente.");
             }
@@ -214,24 +187,98 @@ namespace POSSystem
             }
         }
 
+        private void dgvdata_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
+        {
+            if (e.ColumnIndex == 0 && e.RowIndex >= 0)
+            {
+                e.Paint(e.CellBounds, DataGridViewPaintParts.All);
+
+                System.Drawing.Image icono = Properties.Resources.tick_symbol_icon15;
+
+                if (e.RowIndex == rowIndexSelected && seleccionado)
+                {
+                    icono = Properties.Resources.close_icon15;
+                }
+
+                var w = icono.Width;
+                var h = icono.Height;
+                var x = e.CellBounds.Left + (e.CellBounds.Width - w) / 2;
+                var y = e.CellBounds.Top + (e.CellBounds.Height - h) / 2;
+
+                e.Graphics.DrawImage(icono, new Rectangle(x, y, w, h));
+                e.Handled = true;
+            }
+        }
+
+        private void PintarIconoTickEnTodasLasCeldas()
+        {
+            foreach (DataGridViewRow row in dgvdata.Rows)
+            {
+                // Si la fila no está seleccionada, pinta el ícono del tick en la celda
+                if (row.Index != rowIndexSelected)
+                {
+                    dgvdata.InvalidateCell(0, row.Index);
+                }
+            }
+        }
+
         private void dgvdata_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (dgvdata.Columns[e.ColumnIndex].Name == "btnSeleccionar")
-            {
-                int indice = e.RowIndex;
-                if (indice >= 0)
-                {
-                    txtId.Text = dgvdata.Rows[indice].Cells["Cat_Id"].Value.ToString();
-                    boxNombre.Text = dgvdata.Rows[indice].Cells["Cat_Nombre"].Value.ToString();
 
-                    foreach (OpcionCombo os in cboEstatus.Items)
+            if (e.RowIndex >= 0 && e.ColumnIndex == 0)
+            {
+                // Verifica si la fila seleccionada ya coincide con la fila seleccionada anteriormente
+                if (e.RowIndex == rowIndexSelected)
+                {
+                    // Si es así, deselecciona la fila y limpia los campos
+                    Limpiar();
+                    dgvdata.InvalidateCell(0, rowIndexSelected);
+                    rowIndexSelected = -1; // Establece rowIndexSelected a -1 para indicar que no hay fila seleccionada
+                    seleccionado = false;
+                }
+                else
+                {
+                    // Si la fila seleccionada es diferente a la fila seleccionada anteriormente
+                    if (seleccionado)
                     {
-                        if (os.Valor.ToString() == dgvdata.Rows[indice].Cells["EstatusValor"].Value.ToString())
-                        {
-                            indice_combo_estatus = cboEstatus.Items.IndexOf(os);
-                            cboEstatus.SelectedIndex = indice_combo_estatus;
-                            break;
-                        }
+                        // Limpia los campos y deselecciona la fila anteriormente seleccionada
+                        Limpiar();
+                        dgvdata.InvalidateCell(0, rowIndexSelected);
+                    }
+
+                    // Actualiza rowIndexSelected y marca la fila como seleccionada
+                    rowIndexSelected = e.RowIndex;
+                    seleccionado = true;
+
+                    // Carga los datos de la fila seleccionada en los campos
+                    CargarDatosFilaSeleccionada();
+
+                    // Actualiza la apariencia de la celda del botón
+                    dgvdata.InvalidateCell(0, e.RowIndex);
+                }
+
+                // Pinta el ícono del tick en todas las demás celdas
+                PintarIconoTickEnTodasLasCeldas();
+            }
+
+        }
+
+
+        private void CargarDatosFilaSeleccionada()
+        {
+            int indice = rowIndexSelected;
+            if (indice >= 0)
+            {
+                txtId.Text = dgvdata.Rows[indice].Cells["Cat_Id"].Value.ToString();
+                boxNombre.Text = dgvdata.Rows[indice].Cells["Cat_Nombre"].Value.ToString();
+
+                foreach (OpcionCombo os in cboEstatus.Items)
+                {
+                    if (os.Valor.ToString() == dgvdata.Rows[indice].Cells["EstatusValor"].Value.ToString())
+                    {
+                        indice_combo_estatus = cboEstatus.Items.IndexOf(os);
+                        cboEstatus.SelectedIndex = indice_combo_estatus;
+                        break;
                     }
                 }
             }

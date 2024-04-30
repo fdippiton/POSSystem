@@ -12,9 +12,9 @@ namespace BusinessLayer
     {
         private DL_Producto objdl_Producto = new DL_Producto();
 
-        public List<Producto> ListarProductos()
+        public List<Producto> ListarProductos(string estatus)
         {
-            return objdl_Producto.ListarProductos();
+            return objdl_Producto.ListarProductos(estatus);
         }
 
         public bool CrearProducto(Producto producto)
@@ -27,9 +27,24 @@ namespace BusinessLayer
             return objdl_Producto.EditarProducto(producto);
         }
 
-        public bool EliminarProducto(int productoId)
+        public bool EliminarProducto(int productoCod)
         {
-            return objdl_Producto.EliminarProducto(productoId);
+            return objdl_Producto.EliminarProducto(productoCod);
+        }
+
+        public bool InactivarProducto(Producto producto)
+        {
+            return objdl_Producto.InactivarProducto(producto);
+        }
+
+        public bool VaciarRegistros()
+        {
+            return objdl_Producto.VaciarRegistros();
+        }
+
+        public Producto BuscarProducto(string codigoBarras)
+        {
+            return objdl_Producto.BuscarProducto(codigoBarras);
         }
     }
 }

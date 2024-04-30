@@ -49,6 +49,7 @@
             this.menuReportes = new FontAwesome.Sharp.IconMenuItem();
             this.menuAcercaDe = new FontAwesome.Sharp.IconMenuItem();
             this.menuTitulo = new System.Windows.Forms.MenuStrip();
+            this.SubmenuProductosInactivos = new System.Windows.Forms.ToolStripMenuItem();
             this.menu.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -151,8 +152,9 @@
             // menuMantenedor
             // 
             this.menuMantenedor.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.SubmenuCategoria,
             this.SubMenuProducto,
+            this.SubmenuProductosInactivos,
+            this.SubmenuCategoria,
             this.SubMenuImprimirCodigo});
             this.menuMantenedor.IconChar = FontAwesome.Sharp.IconChar.Tools;
             this.menuMantenedor.IconColor = System.Drawing.Color.Black;
@@ -293,6 +295,13 @@
             this.menuTitulo.TabIndex = 7;
             this.menuTitulo.Text = "menuStrip2";
             // 
+            // SubmenuProductosInactivos
+            // 
+            this.SubmenuProductosInactivos.Name = "SubmenuProductosInactivos";
+            this.SubmenuProductosInactivos.Size = new System.Drawing.Size(180, 22);
+            this.SubmenuProductosInactivos.Text = "Productos inactivos";
+            this.SubmenuProductosInactivos.Click += new System.EventHandler(this.SubmenuProductosInactivos_Click);
+            // 
             // Inicio
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -337,6 +346,7 @@
         private FontAwesome.Sharp.IconMenuItem menuAcercaDe;
         private System.Windows.Forms.MenuStrip menuTitulo;
         private System.Windows.Forms.ToolStripMenuItem SubMenuImprimirCodigo;
+        private System.Windows.Forms.ToolStripMenuItem SubmenuProductosInactivos;
     }
 }
 

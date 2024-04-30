@@ -73,6 +73,16 @@ namespace POSSystem.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap recycle_bin_icon {
+            get {
+                object obj = ResourceManager.GetObject("recycle_bin_icon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap tick_symbol_icon15 {
             get {
                 object obj = ResourceManager.GetObject("tick_symbol_icon15", resourceCulture);

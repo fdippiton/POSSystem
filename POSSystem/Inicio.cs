@@ -150,5 +150,10 @@ namespace POSSystem
         {
             AbrirFormulario(menuMantenedor, new FormImprimirCodigos());
         }
+
+        private void SubmenuProductosInactivos_Click(object sender, EventArgs e)
+        {
+            AbrirFormulario(menuMantenedor, new FormProductosInactivos());
+        }
     }
 }

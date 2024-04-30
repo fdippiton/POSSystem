@@ -94,6 +94,12 @@
     <Compile Include="FormProductos.Designer.cs">
       <DependentUpon>FormProductos.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormProductosInactivos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormProductosInactivos.Designer.cs">
+      <DependentUpon>FormProductosInactivos.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormProveedores.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -153,6 +159,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormProductos.resx">
       <DependentUpon>FormProductos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormProductosInactivos.resx">
+      <DependentUpon>FormProductosInactivos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormProveedores.resx">
       <DependentUpon>FormProveedores.cs</DependentUpon>
@@ -221,6 +230,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\tick-symbol-icon15.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\recycle-bin-icon.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
