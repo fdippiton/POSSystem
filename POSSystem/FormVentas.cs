@@ -113,20 +113,25 @@ namespace POSSystem
 
         private void btnAñadir_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(boxCodProducto.Text)) // Asumiendo que también quieres verificar boxCantidad
+            if (string.IsNullOrWhiteSpace(boxCodProducto.Text))
             {
-                MessageBox.Show("El codigo de producto está vacio.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            } else if(string.IsNullOrWhiteSpace(boxProducto.Text)) {
-                MessageBox.Show("El campo de producto está vacio.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            } else if (string.IsNullOrWhiteSpace(boxPrecio.Text))
+                MessageBox.Show("El código de producto está vacío.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else if (string.IsNullOrWhiteSpace(boxProducto.Text))
             {
-                MessageBox.Show("El campo de precio está vacio.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            } else if (string.IsNullOrWhiteSpace(boxStockActual.Text))
+                MessageBox.Show("El campo de producto está vacío.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else if (string.IsNullOrWhiteSpace(boxPrecio.Text))
             {
-                MessageBox.Show("El campo de stock está vacio.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            } else if (boxCantidad.Text == "0")
+                MessageBox.Show("El campo de precio está vacío.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else if (string.IsNullOrWhiteSpace(boxStockActual.Text))
             {
-                MessageBox.Show("El campo de cantidad está vacio.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("No hay stock disponible.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else if (boxCantidad.Text == "0")
+            {
+                MessageBox.Show("El campo de cantidad está vacío.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else if (Convert.ToInt32(boxCantidad.Text) > Convert.ToInt32(boxStockActual.Text))
             {
@@ -134,66 +139,67 @@ namespace POSSystem
             }
             else
             {
-                decimal itbis = ((Convert.ToDecimal(boxPrecio.Text) * Convert.ToInt32(boxCantidad.Text)) * Convert.ToDecimal(((OpcionCombo)cboItbis.SelectedItem).Valor.ToString()));
+                string codigoProducto = boxCodProducto.Text;
+                int cantidad = Convert.ToInt32(boxCantidad.Text);
+                decimal precio = Convert.ToDecimal(boxPrecio.Text);
+                decimal tasaItbis = Convert.ToDecimal(((OpcionCombo)cboItbis.SelectedItem).Valor.ToString());
+                bool productoEncontrado = false;
 
-                // Agregar las demás celdas a la fila
-                dgvdata.Rows.Add(new object[] {
-                "",
-                boxCodProducto.Text,
-                boxProducto.Text,
-                boxCantidad.Text,
-                "$" + boxPrecio.Text,
-                itbis,
-                (Convert.ToDecimal(boxPrecio.Text) * Convert.ToInt32(boxCantidad.Text) + itbis),
-        });
-
-                LimpiarCampos();
-
-                decimal totalItbis = 0;
-                decimal totalAPagar = 0;
                 foreach (DataGridViewRow row in dgvdata.Rows)
                 {
-                    totalItbis += Convert.ToDecimal(row.Cells["Prod_Itbis"].Value.ToString());
-                    totalAPagar += Convert.ToDecimal(row.Cells["Prod_Subtotal"].Value.ToString());
+                    if (row.Cells["Prod_CodigoBarras"].Value.ToString() == codigoProducto)
+                    {
+                        productoEncontrado = true;
+                        int cantidadExistente = Convert.ToInt32(row.Cells["Prod_Cantidad"].Value);
+                        if (cantidadExistente + cantidad <= Convert.ToInt32(boxStockActual.Text))
+                        {
+                            row.Cells["Prod_Cantidad"].Value = cantidadExistente + cantidad;
+                            decimal nuevoItbis = precio * (cantidadExistente + cantidad) * tasaItbis;
+                            decimal nuevoSubtotal = (precio * (cantidadExistente + cantidad)) + nuevoItbis;
+                            row.Cells["Prod_Itbis"].Value = nuevoItbis;
+                            row.Cells["Prod_Subtotal"].Value = nuevoSubtotal;
+                            ActualizarTotales();
+                        }
+                        else
+                        {
+                            MessageBox.Show("Agregar esta cantidad supera el stock disponible.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                        break;
+                    }
                 }
 
-                boxTotalItbis.Text = totalItbis.ToString();
-                boxTotalPagar.Text = totalAPagar.ToString();
+                if (!productoEncontrado)
+                {
+                    decimal itbis = precio * cantidad * tasaItbis;
+                    decimal subtotal = (precio * cantidad) + itbis;
+                    dgvdata.Rows.Add(new object[] {
+                "",
+                codigoProducto,
+                boxProducto.Text,
+                cantidad,
+                "$" + precio.ToString("N2"),
+                itbis,
+                subtotal
+            });
+                    ActualizarTotales();
+                }
+
+                LimpiarCampos();
             }
         }
 
-        //private void CargarDatosFilaSeleccionada()
-        //{
-        //    int indice = rowIndexSelected;
-        //    if (indice >= 0)
-        //    {
-        //        boxCodProducto.Text = dgvdata.Rows[indice].Cells["Prod_CodigoBarras"].Value.ToString();
-        //        // textId.Text = dgvdata.Rows[indice].Cells["Prod_Id"].Value.ToString();
-        //        boxNombre.Text = dgvdata.Rows[indice].Cells["Prod_Nombre"].Value.ToString();
-        //        boxDescripcion.Text = dgvdata.Rows[indice].Cells["Prod_Descripcion"].Value.ToString();
-        //        boxCantidadInicial.Text = dgvdata.Rows[indice].Cells["Prod_StockInicial"].Value.ToString();
-        //        boxPrecioCompra.Text = dgvdata.Rows[indice].Cells["Prod_PrecioCompra"].Value.ToString();
-        //        boxPrecioVenta.Text = dgvdata.Rows[indice].Cells["Prod_PrecioVenta"].Value.ToString();
-
-        //        boxCantidadInicial.Enabled = false;
-        //        boxPrecioCompra.Enabled = false;
-
-        //        foreach (OpcionCombo oc in cboCategoria.Items)
-        //        {
-        //            if (oc.Valor.ToString() == dgvdata.Rows[indice].Cells["Prod_Categoria_Id"].Value.ToString())
-        //            {
-        //                indice_combo_Cat = cboCategoria.Items.IndexOf(oc);
-        //                cboCategoria.SelectedIndex = indice_combo_Cat;
-        //                break;
-        //            }
-        //        }
-
-        //        seleccionado = true;
-        //    }
-        //}
-
-
- 
+        private void ActualizarTotales()
+        {
+            decimal totalItbis = 0;
+            decimal totalAPagar = 0;
+            foreach (DataGridViewRow row in dgvdata.Rows)
+            {
+                totalItbis += Convert.ToDecimal(row.Cells["Prod_Itbis"].Value.ToString());
+                totalAPagar += Convert.ToDecimal(row.Cells["Prod_Subtotal"].Value.ToString());
+            }
+            boxTotalItbis.Text = totalItbis.ToString();
+            boxTotalPagar.Text = totalAPagar.ToString();
+        }
 
         private void dgvdata_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
