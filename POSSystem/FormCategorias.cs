@@ -93,7 +93,7 @@ namespace POSSystem
             if (string.IsNullOrWhiteSpace(txtNombre.Text) ||
                 cboEstatus.SelectedItem == null)
             {
-                MessageBox.Show("Por favor, complete todos los campos requeridos.");
+                MessageBox.Show("Por favor, complete todos los campos requeridos.", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 return; // Detener la ejecución adicional si alguno de los campos está vacío
             }
 
@@ -113,7 +113,7 @@ namespace POSSystem
             // Verificar si la categoría fue agregada correctamente
             if (resultado)
             {
-                MessageBox.Show("Categoría creada correctamente.");
+                MessageBox.Show("Categoría creada correctamente.","Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 seleccionado = false;
                 CargarDatos(); // Actualizar la lista o el DataGridView con los datos actualizados
                 Limpiar();     // Limpiar los campos del formulario
@@ -121,7 +121,7 @@ namespace POSSystem
             else
             {
                 // Hubo un error al crear la categoría
-                MessageBox.Show("Error al crear la categoría.");
+                MessageBox.Show("Error al crear la categoría.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -152,13 +152,13 @@ namespace POSSystem
                 CargarDatos();
 
 
-                MessageBox.Show("Categoría editada correctamente.");
+                MessageBox.Show("Categoría editada correctamente.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 Limpiar();
             }
             else
             {
                 // Hubo un error al editar la categoría
-                MessageBox.Show("Error al editar la categoría.");
+                MessageBox.Show("Error al editar la categoría.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -178,12 +178,12 @@ namespace POSSystem
                 dgvdata.Rows.RemoveAt(dgvdata.CurrentRow.Index);
                 seleccionado = false;
                 Limpiar();
-                MessageBox.Show("Categoría eliminada correctamente.");
+                MessageBox.Show("Categoría eliminada correctamente.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else
             {
                 // Hubo un error al eliminar la categoría
-                MessageBox.Show("Error al eliminar la categoría.");
+                MessageBox.Show("Error al eliminar la categoría.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

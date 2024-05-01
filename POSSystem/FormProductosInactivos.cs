@@ -117,7 +117,7 @@ namespace POSSystem
             int indice = rowIndexSelected;
             if (indice >= 0)
             {
-                txtId.Text = dgvdata.Rows[indice].Cells["Prod_Id"].Value.ToString();
+                txtId.Text = dgvdata.Rows[indice].Cells["Prod_CodigoBarras"].Value.ToString();
                 seleccionado = true;
             }
         }
@@ -193,7 +193,7 @@ namespace POSSystem
                 if (result == DialogResult.Yes)
                 {
                     // Obtener el ID del producto a eliminar
-                    int productoId = Convert.ToInt32(txtId.Text);
+                    string productoId = txtId.Text;
 
                     // Instanciar la lógica de negocio
                     BL_Producto blProducto = new BL_Producto();

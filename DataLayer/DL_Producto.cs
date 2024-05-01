@@ -217,7 +217,8 @@ namespace DataLayer
                     query.AppendLine("UPDATE Productos");
                     query.AppendLine("SET Prod_Nombre = @Prod_Nombre,");
                     query.AppendLine("    Prod_Descripcion = @Prod_Descripcion,");
-                    query.AppendLine("    Prod_Categoria_Id = @Prod_Categoria_Id");
+                    query.AppendLine("    Prod_Categoria_Id = @Prod_Categoria_Id,");
+                    query.AppendLine("    Prod_PrecioVenta = @Prod_PrecioVenta");
                     query.AppendLine("WHERE Prod_CodigoBarras = @Prod_CodigoBarras;");
 
                     SqlCommand cmd = new SqlCommand(query.ToString(), conexion);
@@ -225,6 +226,7 @@ namespace DataLayer
                     cmd.Parameters.AddWithValue("@Prod_Descripcion", producto.Prod_Descripcion);
                     cmd.Parameters.AddWithValue("@Prod_Categoria_Id", producto.oProd_Categoria_Id.Cat_Id);
                     cmd.Parameters.AddWithValue("@Prod_CodigoBarras", producto.Prod_CodigoBarras);
+                    cmd.Parameters.AddWithValue("@Prod_PrecioVenta", producto.Prod_PrecioVenta);
 
                     conexion.Open();
                     int filasAfectadas = cmd.ExecuteNonQuery();
@@ -273,7 +275,7 @@ namespace DataLayer
         }
 
 
-        public bool EliminarProducto(int productoId)
+        public bool EliminarProducto(string productoId)
         {
             bool resultado = false;
             using (SqlConnection conexion = new SqlConnection(Conexion.cadena))

@@ -59,28 +59,31 @@
             // 
             // txtId
             // 
+            this.txtId.Font = new System.Drawing.Font("Roboto Mono", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtId.Location = new System.Drawing.Point(220, 49);
             this.txtId.Name = "txtId";
             this.txtId.ReadOnly = true;
-            this.txtId.Size = new System.Drawing.Size(48, 20);
+            this.txtId.Size = new System.Drawing.Size(48, 23);
             this.txtId.TabIndex = 106;
             this.txtId.Text = "0";
             // 
             // cboEstatus
             // 
             this.cboEstatus.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboEstatus.Font = new System.Drawing.Font("Roboto Mono", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboEstatus.FormattingEnabled = true;
             this.cboEstatus.Location = new System.Drawing.Point(31, 131);
             this.cboEstatus.Name = "cboEstatus";
-            this.cboEstatus.Size = new System.Drawing.Size(237, 21);
+            this.cboEstatus.Size = new System.Drawing.Size(237, 24);
             this.cboEstatus.TabIndex = 105;
             // 
             // txtBuscar
             // 
             this.txtBuscar.AutoSize = true;
-            this.txtBuscar.Location = new System.Drawing.Point(833, 27);
+            this.txtBuscar.Font = new System.Drawing.Font("Roboto Mono", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtBuscar.Location = new System.Drawing.Point(833, 18);
             this.txtBuscar.Name = "txtBuscar";
-            this.txtBuscar.Size = new System.Drawing.Size(61, 13);
+            this.txtBuscar.Size = new System.Drawing.Size(84, 16);
             this.txtBuscar.TabIndex = 104;
             this.txtBuscar.Text = "Buscar por:";
             // 
@@ -88,13 +91,13 @@
             // 
             this.btnLimpiar.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.btnLimpiar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnLimpiar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnLimpiar.Font = new System.Drawing.Font("Roboto Mono", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnLimpiar.ForeColor = System.Drawing.Color.DarkGray;
             this.btnLimpiar.IconChar = FontAwesome.Sharp.IconChar.Broom;
             this.btnLimpiar.IconColor = System.Drawing.Color.Black;
             this.btnLimpiar.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnLimpiar.IconSize = 20;
-            this.btnLimpiar.Location = new System.Drawing.Point(1106, 18);
+            this.btnLimpiar.Location = new System.Drawing.Point(1136, 11);
             this.btnLimpiar.Name = "btnLimpiar";
             this.btnLimpiar.Size = new System.Drawing.Size(36, 30);
             this.btnLimpiar.TabIndex = 103;
@@ -105,13 +108,13 @@
             // 
             this.btnBuscar.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.btnBuscar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnBuscar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnBuscar.Font = new System.Drawing.Font("Roboto Mono", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnBuscar.ForeColor = System.Drawing.Color.DarkGray;
             this.btnBuscar.IconChar = FontAwesome.Sharp.IconChar.MagnifyingGlass;
             this.btnBuscar.IconColor = System.Drawing.Color.Black;
             this.btnBuscar.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnBuscar.IconSize = 20;
-            this.btnBuscar.Location = new System.Drawing.Point(1064, 18);
+            this.btnBuscar.Location = new System.Drawing.Point(1094, 11);
             this.btnBuscar.Name = "btnBuscar";
             this.btnBuscar.Size = new System.Drawing.Size(36, 30);
             this.btnBuscar.TabIndex = 102;
@@ -120,33 +123,36 @@
             // 
             // boxBuscar
             // 
-            this.boxBuscar.Location = new System.Drawing.Point(893, 23);
+            this.boxBuscar.Font = new System.Drawing.Font("Roboto Mono", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.boxBuscar.Location = new System.Drawing.Point(923, 15);
             this.boxBuscar.Name = "boxBuscar";
-            this.boxBuscar.Size = new System.Drawing.Size(156, 20);
+            this.boxBuscar.Size = new System.Drawing.Size(156, 23);
             this.boxBuscar.TabIndex = 101;
             // 
             // cboBuscar
             // 
             this.cboBuscar.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboBuscar.Font = new System.Drawing.Font("Roboto Mono", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboBuscar.FormattingEnabled = true;
-            this.cboBuscar.Location = new System.Drawing.Point(654, 23);
+            this.cboBuscar.Location = new System.Drawing.Point(651, 14);
             this.cboBuscar.Name = "cboBuscar";
-            this.cboBuscar.Size = new System.Drawing.Size(156, 21);
+            this.cboBuscar.Size = new System.Drawing.Size(156, 24);
             this.cboBuscar.TabIndex = 100;
             // 
             // txtFiltrar
             // 
             this.txtFiltrar.AutoSize = true;
-            this.txtFiltrar.Location = new System.Drawing.Point(619, 27);
+            this.txtFiltrar.Font = new System.Drawing.Font("Roboto Mono", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtFiltrar.Location = new System.Drawing.Point(582, 18);
             this.txtFiltrar.Name = "txtFiltrar";
-            this.txtFiltrar.Size = new System.Drawing.Size(35, 13);
+            this.txtFiltrar.Size = new System.Drawing.Size(63, 16);
             this.txtFiltrar.TabIndex = 99;
             this.txtFiltrar.Text = "Filtrar:";
             // 
             // txtListaCategorias
             // 
-            this.txtListaCategorias.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
-            this.txtListaCategorias.Location = new System.Drawing.Point(303, 21);
+            this.txtListaCategorias.Font = new System.Drawing.Font("Roboto Mono", 12.75F, System.Drawing.FontStyle.Bold);
+            this.txtListaCategorias.Location = new System.Drawing.Point(303, 14);
             this.txtListaCategorias.Name = "txtListaCategorias";
             this.txtListaCategorias.Size = new System.Drawing.Size(221, 25);
             this.txtListaCategorias.TabIndex = 98;
@@ -223,10 +229,10 @@
             // 
             this.txtDetalleCategoria.AutoSize = true;
             this.txtDetalleCategoria.BackColor = System.Drawing.Color.White;
-            this.txtDetalleCategoria.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F);
+            this.txtDetalleCategoria.Font = new System.Drawing.Font("Roboto Mono", 12.75F, System.Drawing.FontStyle.Bold);
             this.txtDetalleCategoria.Location = new System.Drawing.Point(27, 15);
             this.txtDetalleCategoria.Name = "txtDetalleCategoria";
-            this.txtDetalleCategoria.Size = new System.Drawing.Size(149, 22);
+            this.txtDetalleCategoria.Size = new System.Drawing.Size(180, 23);
             this.txtDetalleCategoria.TabIndex = 96;
             this.txtDetalleCategoria.Text = "Detalle Categoria";
             // 
@@ -234,15 +240,15 @@
             // 
             this.btnEliminar.BackColor = System.Drawing.Color.Crimson;
             this.btnEliminar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnEliminar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnEliminar.Font = new System.Drawing.Font("Roboto Mono", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEliminar.ForeColor = System.Drawing.Color.White;
             this.btnEliminar.IconChar = FontAwesome.Sharp.IconChar.Trash;
             this.btnEliminar.IconColor = System.Drawing.Color.White;
             this.btnEliminar.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnEliminar.IconSize = 16;
-            this.btnEliminar.Location = new System.Drawing.Point(193, 170);
+            this.btnEliminar.Location = new System.Drawing.Point(31, 203);
             this.btnEliminar.Name = "btnEliminar";
-            this.btnEliminar.Size = new System.Drawing.Size(75, 30);
+            this.btnEliminar.Size = new System.Drawing.Size(100, 30);
             this.btnEliminar.TabIndex = 95;
             this.btnEliminar.Text = "Eliminar";
             this.btnEliminar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -254,15 +260,15 @@
             // 
             this.btnEditar.BackColor = System.Drawing.Color.RoyalBlue;
             this.btnEditar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnEditar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnEditar.Font = new System.Drawing.Font("Roboto Mono", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEditar.ForeColor = System.Drawing.Color.White;
             this.btnEditar.IconChar = FontAwesome.Sharp.IconChar.PenToSquare;
             this.btnEditar.IconColor = System.Drawing.Color.White;
             this.btnEditar.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnEditar.IconSize = 16;
-            this.btnEditar.Location = new System.Drawing.Point(112, 170);
+            this.btnEditar.Location = new System.Drawing.Point(168, 203);
             this.btnEditar.Name = "btnEditar";
-            this.btnEditar.Size = new System.Drawing.Size(75, 30);
+            this.btnEditar.Size = new System.Drawing.Size(100, 30);
             this.btnEditar.TabIndex = 94;
             this.btnEditar.Text = "Editar";
             this.btnEditar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -274,15 +280,15 @@
             // 
             this.btnGuardar.BackColor = System.Drawing.Color.ForestGreen;
             this.btnGuardar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnGuardar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnGuardar.Font = new System.Drawing.Font("Roboto Mono", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnGuardar.ForeColor = System.Drawing.Color.White;
             this.btnGuardar.IconChar = FontAwesome.Sharp.IconChar.FloppyDisk;
             this.btnGuardar.IconColor = System.Drawing.Color.White;
             this.btnGuardar.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnGuardar.IconSize = 16;
-            this.btnGuardar.Location = new System.Drawing.Point(31, 170);
+            this.btnGuardar.Location = new System.Drawing.Point(31, 166);
             this.btnGuardar.Name = "btnGuardar";
-            this.btnGuardar.Size = new System.Drawing.Size(75, 30);
+            this.btnGuardar.Size = new System.Drawing.Size(237, 30);
             this.btnGuardar.TabIndex = 93;
             this.btnGuardar.Text = "Guardar";
             this.btnGuardar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -292,18 +298,20 @@
             // 
             // boxNombre
             // 
+            this.boxNombre.Font = new System.Drawing.Font("Roboto Mono", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.boxNombre.Location = new System.Drawing.Point(31, 79);
             this.boxNombre.Name = "boxNombre";
-            this.boxNombre.Size = new System.Drawing.Size(237, 20);
+            this.boxNombre.Size = new System.Drawing.Size(237, 23);
             this.boxNombre.TabIndex = 92;
             // 
             // txtEstatus
             // 
             this.txtEstatus.AutoSize = true;
             this.txtEstatus.BackColor = System.Drawing.Color.White;
+            this.txtEstatus.Font = new System.Drawing.Font("Roboto Mono", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtEstatus.Location = new System.Drawing.Point(31, 114);
             this.txtEstatus.Name = "txtEstatus";
-            this.txtEstatus.Size = new System.Drawing.Size(42, 13);
+            this.txtEstatus.Size = new System.Drawing.Size(56, 16);
             this.txtEstatus.TabIndex = 91;
             this.txtEstatus.Text = "Estatus";
             // 
@@ -311,9 +319,10 @@
             // 
             this.txtNombre.AutoSize = true;
             this.txtNombre.BackColor = System.Drawing.Color.White;
+            this.txtNombre.Font = new System.Drawing.Font("Roboto Mono", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtNombre.Location = new System.Drawing.Point(31, 63);
             this.txtNombre.Name = "txtNombre";
-            this.txtNombre.Size = new System.Drawing.Size(44, 13);
+            this.txtNombre.Size = new System.Drawing.Size(49, 16);
             this.txtNombre.TabIndex = 90;
             this.txtNombre.Text = "Nombre";
             // 
@@ -322,6 +331,7 @@
             this.label2.BackColor = System.Drawing.Color.White;
             this.label2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.label2.Dock = System.Windows.Forms.DockStyle.Left;
+            this.label2.Font = new System.Drawing.Font("Roboto Mono", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(0, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(291, 591);

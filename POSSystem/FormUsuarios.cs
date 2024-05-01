@@ -57,8 +57,6 @@ namespace POSSystem
             cboestatus.ValueMember = "Valor"; // Establece la propiedad ValueMember del ComboBox cboestatus para que el valor seleccionado sea el valor definido en la propiedad Valor de la clase OpcionCombo.
             cboestatus.SelectedIndex = 0; // Establece el índice seleccionado inicialmente en el ComboBox cboestatus como 0, lo que significa que el primer elemento en la lista desplegable será seleccionado por defecto.
 
-
-
             // Listar los roles en el dropdown
             List<Rol> listaRol = new BL_Rol().Listar();
             foreach (Rol item in listaRol)
@@ -91,7 +89,6 @@ namespace POSSystem
             cboBuscar.ValueMember = "Valor";
             cboBuscar.SelectedIndex = 0;
 
-
             CargarUsuarios();
         }
 
@@ -120,7 +117,7 @@ namespace POSSystem
                 cborol.SelectedItem == null ||
                 cboestatus.SelectedItem == null)
             {
-                MessageBox.Show("Por favor, complete todos los campos requeridos.");
+                MessageBox.Show("Por favor, complete todos los campos requeridos.", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return; // Detener la ejecución adicional si alguno de los campos está vacío
             }
 
@@ -143,7 +140,7 @@ namespace POSSystem
 
             if (documentoExistente)
             {
-                MessageBox.Show("Ya existe un usuario con el mismo documento.");
+                MessageBox.Show("Ya existe un usuario con el mismo documento.", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 LimpiarCampos();
                 return; // Detener la ejecución si existe ya un documento similar
             }
@@ -154,14 +151,14 @@ namespace POSSystem
                 // Verificar si el usuario fue agregado correctamente
                 if (resultado)
                 {
-                    MessageBox.Show("Usuario creado correctamente.");
+                    MessageBox.Show("Usuario creado correctamente.", "Información");
                     CargarUsuarios();
                     LimpiarCampos();
                 }
                 else
                 {
                     // Hubo un error al crear el usuario
-                    MessageBox.Show("Error al crear el usuario.");
+                    MessageBox.Show("Error al crear el usuario.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
 
             }
@@ -202,14 +199,15 @@ namespace POSSystem
                 dgvdata.Rows[indiceFila].Cells["EstatusValor"].Value = usuarioEditado.Usu_Estatus;
                 dgvdata.Rows[indiceFila].Cells["Usu_Estatus"].Value = ((OpcionCombo)cboestatus.SelectedItem).Valor;
 
-
-                MessageBox.Show("Usuario editado correctamente.");
+                MessageBox.Show("Usuario editado correctamente.", "Información");
+                seleccionado = false;
+                CargarUsuarios();
                 LimpiarCampos();
             }
             else
             {
                 // Hubo un error al editar el usuario
-                MessageBox.Show("Error al editar el usuario.");
+                MessageBox.Show("Error al editar el usuario.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -229,12 +227,12 @@ namespace POSSystem
                 dgvdata.Rows.RemoveAt(dgvdata.CurrentRow.Index);
                 LimpiarCampos();
 
-                MessageBox.Show("Usuario eliminado correctamente.");
+                MessageBox.Show("Usuario eliminado correctamente.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else
             {
                 // Hubo un error al eliminar el usuario
-                MessageBox.Show("Error al eliminar el usuario.");
+                MessageBox.Show("Error al eliminar el usuario.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

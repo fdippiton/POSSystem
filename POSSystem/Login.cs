@@ -48,7 +48,6 @@ namespace POSSystem
                 this.Hide(); // Ocultar la ventana de inicio de sesion
 
                 form.FormClosing += form_closing;  // Cuando se cierre la vista de Inicio, se muestre la vista de Login
-
             }
             else
             {

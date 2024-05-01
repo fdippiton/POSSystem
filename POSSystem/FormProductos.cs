@@ -102,10 +102,10 @@ namespace POSSystem
                 producto.Prod_Descripcion,
                 producto.Prod_StockInicial,
                 producto.Prod_StockActual,
-                "$" + producto.Prod_PrecioCompra,
-                "$" + producto.Prod_PrecioVenta,
-                "$" + valorInventarioInicial,
-                "$" + valorInventarioActual,
+                producto.Prod_PrecioCompra,
+                producto.Prod_PrecioVenta,
+                valorInventarioInicial,
+                valorInventarioActual,
                 producto.Prod_Fecha.ToString("d")
                 });
 
@@ -129,38 +129,38 @@ namespace POSSystem
             // Validar cada campo individualmente para ofrecer retroalimentación específica.
             if (string.IsNullOrWhiteSpace(boxNombre.Text))
             {
-                MessageBox.Show("El campo 'Nombre' es requerido.");
+                MessageBox.Show("El campo 'Nombre' es requerido.", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 return;
             }
 
             if (!int.TryParse(boxCantidadInicial.Text, out int stockInicial))
             {
-                MessageBox.Show("El campo 'Cantidad Inicial' debe ser un número entero.");
+                MessageBox.Show("El campo 'Cantidad Inicial' debe ser un número entero.", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 return;
             }
 
             if (!decimal.TryParse(boxPrecioCompra.Text, out decimal precioCompra))
             {
-                MessageBox.Show("El campo 'Precio de Compra' debe ser un número entero.");
+                MessageBox.Show("El campo 'Precio de Compra' debe ser un número entero.", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 return;
             }
 
             if (!decimal.TryParse(boxPrecioVenta.Text, out decimal precioVenta))
             {
-                MessageBox.Show("El campo 'Precio de Venta' debe ser un número entero.");
+                MessageBox.Show("El campo 'Precio de Venta' debe ser un número entero.", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 return;
             }
 
             if (cboCategoria.SelectedItem == null)
             {
-                MessageBox.Show("Debe seleccionar una categoría.");
+                MessageBox.Show("Debe seleccionar una categoría.", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 return;
             }
 
             if (!(cboCategoria.SelectedItem is OpcionCombo opcion) ||
                 !int.TryParse(Convert.ToString(opcion.Valor), out int categoriaId))
             {
-                MessageBox.Show("El valor de la categoría seleccionada no es válido.");
+                MessageBox.Show("El valor de la categoría seleccionada no es válido.", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 return;
             }
 
@@ -185,14 +185,14 @@ namespace POSSystem
             // Verificar si el producto fue agregado correctamente
             if (resultado)
             {
-                MessageBox.Show("Producto creado correctamente.");
+                MessageBox.Show("Producto creado correctamente.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 CargarProductos();
                 LimpiarCampos();
             }
             else
             {
                 // Hubo un error al crear el producto
-                MessageBox.Show("Error al crear el producto.");
+                MessageBox.Show("Error al crear el producto.", "Error",  MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
             LimpiarCampos();
@@ -210,6 +210,7 @@ namespace POSSystem
                 Prod_Nombre = boxNombre.Text,
                 Prod_Descripcion = boxDescripcion.Text,
                 oProd_Categoria_Id = new Categoria { Cat_Id = Convert.ToInt32(((OpcionCombo)cboCategoria.SelectedItem).Valor) },
+                Prod_PrecioVenta = Convert.ToDecimal(boxPrecioVenta.Text),
             };
 
             // Instanciar la lógica de negocio y tratar de editar el producto
@@ -219,27 +220,15 @@ namespace POSSystem
             // Verificar si el producto fue editado correctamente
             if (resultado)
             {
-                //// Actualizar la fila correspondiente en el DataGridView con los nuevos datos del usuario editado
-                //int indiceFila = dgvdata.CurrentRow.Index;
-                //dgvdata.Rows[indiceFila].Cells["Usu_Id"].Value = usuarioEditado.Usu_Id;
-                //dgvdata.Rows[indiceFila].Cells["Usu_Documento"].Value = usuarioEditado.Usu_Documento;
-                //dgvdata.Rows[indiceFila].Cells["Usu_NombreCompleto"].Value = usuarioEditado.Usu_NombreCompleto;
-                //dgvdata.Rows[indiceFila].Cells["Usu_Correo"].Value = usuarioEditado.Usu_Correo;
-                //dgvdata.Rows[indiceFila].Cells["Usu_Contrasena"].Value = usuarioEditado.Usu_Contrasena;
-                //dgvdata.Rows[indiceFila].Cells["Usu_Rol_Id"].Value = usuarioEditado.oRol_Id.Rol_Id;
-                //dgvdata.Rows[indiceFila].Cells["Usu_Rol"].Value = ((OpcionCombo)cborol.SelectedItem).Texto;
-                //dgvdata.Rows[indiceFila].Cells["EstatusValor"].Value = usuarioEditado.Usu_Estatus;
-                //dgvdata.Rows[indiceFila].Cells["Usu_Estatus"].Value = ((OpcionCombo)cboestatus.SelectedItem).Valor;
-
                 seleccionado = false;
                 CargarProductos();
-                MessageBox.Show("Producto editado correctamente.");
+                MessageBox.Show("Producto editado correctamente.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 LimpiarCampos();
             }
             else
             {
                 // Hubo un error al editar el producto
-                MessageBox.Show("Error al editar el Producto.");
+                MessageBox.Show("Error al editar el Producto.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 
@@ -265,13 +254,13 @@ namespace POSSystem
             {
                 seleccionado = false;
                 CargarProductos();
-                MessageBox.Show("Producto Inactivado correctamente.");
+                MessageBox.Show("Producto inactivado correctamente.", "Información",  MessageBoxButtons.OK, MessageBoxIcon.Information);
                 LimpiarCampos();
             }
             else
             {
                 // Hubo un error al editar el producto
-                MessageBox.Show("Error al inactivar el producto.");
+                MessageBox.Show("Error al inactivar el producto.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

@@ -51,18 +51,20 @@
             // 
             // boxDireccion
             // 
+            this.boxDireccion.Font = new System.Drawing.Font("Roboto Mono", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.boxDireccion.Location = new System.Drawing.Point(232, 227);
             this.boxDireccion.Name = "boxDireccion";
-            this.boxDireccion.Size = new System.Drawing.Size(237, 20);
+            this.boxDireccion.Size = new System.Drawing.Size(237, 23);
             this.boxDireccion.TabIndex = 66;
             // 
             // txtDireccion
             // 
             this.txtDireccion.AutoSize = true;
             this.txtDireccion.BackColor = System.Drawing.Color.Transparent;
-            this.txtDireccion.Location = new System.Drawing.Point(229, 212);
+            this.txtDireccion.Font = new System.Drawing.Font("Roboto Mono", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtDireccion.Location = new System.Drawing.Point(229, 211);
             this.txtDireccion.Name = "txtDireccion";
-            this.txtDireccion.Size = new System.Drawing.Size(52, 13);
+            this.txtDireccion.Size = new System.Drawing.Size(70, 16);
             this.txtDireccion.TabIndex = 65;
             this.txtDireccion.Text = "Dirección";
             // 
@@ -70,7 +72,7 @@
             // 
             this.btnSubir.BackColor = System.Drawing.Color.RoyalBlue;
             this.btnSubir.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnSubir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSubir.Font = new System.Drawing.Font("Roboto Mono", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSubir.ForeColor = System.Drawing.Color.White;
             this.btnSubir.IconChar = FontAwesome.Sharp.IconChar.Upload;
             this.btnSubir.IconColor = System.Drawing.Color.White;
@@ -89,7 +91,7 @@
             // 
             this.btnGuardar.BackColor = System.Drawing.Color.Black;
             this.btnGuardar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnGuardar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnGuardar.Font = new System.Drawing.Font("Roboto Mono", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnGuardar.ForeColor = System.Drawing.Color.White;
             this.btnGuardar.IconChar = FontAwesome.Sharp.IconChar.FloppyDisk;
             this.btnGuardar.IconColor = System.Drawing.Color.White;
@@ -106,25 +108,28 @@
             // 
             // boxRNC
             // 
+            this.boxRNC.Font = new System.Drawing.Font("Roboto Mono", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.boxRNC.Location = new System.Drawing.Point(232, 175);
             this.boxRNC.Name = "boxRNC";
-            this.boxRNC.Size = new System.Drawing.Size(237, 20);
+            this.boxRNC.Size = new System.Drawing.Size(237, 23);
             this.boxRNC.TabIndex = 62;
             // 
             // boxNombreNegocio
             // 
+            this.boxNombreNegocio.Font = new System.Drawing.Font("Roboto Mono", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.boxNombreNegocio.Location = new System.Drawing.Point(232, 123);
             this.boxNombreNegocio.Name = "boxNombreNegocio";
-            this.boxNombreNegocio.Size = new System.Drawing.Size(237, 20);
+            this.boxNombreNegocio.Size = new System.Drawing.Size(237, 23);
             this.boxNombreNegocio.TabIndex = 61;
             // 
             // txtRNC
             // 
             this.txtRNC.AutoSize = true;
             this.txtRNC.BackColor = System.Drawing.Color.Transparent;
-            this.txtRNC.Location = new System.Drawing.Point(229, 159);
+            this.txtRNC.Font = new System.Drawing.Font("Roboto Mono", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtRNC.Location = new System.Drawing.Point(229, 158);
             this.txtRNC.Name = "txtRNC";
-            this.txtRNC.Size = new System.Drawing.Size(30, 13);
+            this.txtRNC.Size = new System.Drawing.Size(28, 16);
             this.txtRNC.TabIndex = 60;
             this.txtRNC.Text = "RNC";
             // 
@@ -132,9 +137,10 @@
             // 
             this.txtNombreNegocio.AutoSize = true;
             this.txtNombreNegocio.BackColor = System.Drawing.Color.Transparent;
-            this.txtNombreNegocio.Location = new System.Drawing.Point(229, 107);
+            this.txtNombreNegocio.Font = new System.Drawing.Font("Roboto Mono", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtNombreNegocio.Location = new System.Drawing.Point(229, 106);
             this.txtNombreNegocio.Name = "txtNombreNegocio";
-            this.txtNombreNegocio.Size = new System.Drawing.Size(87, 13);
+            this.txtNombreNegocio.Size = new System.Drawing.Size(105, 16);
             this.txtNombreNegocio.TabIndex = 59;
             this.txtNombreNegocio.Text = "Nombre Negocio";
             // 
@@ -142,10 +148,10 @@
             // 
             this.txtDetalleNegocio.AutoSize = true;
             this.txtDetalleNegocio.BackColor = System.Drawing.Color.Transparent;
-            this.txtDetalleNegocio.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F);
-            this.txtDetalleNegocio.Location = new System.Drawing.Point(37, 45);
+            this.txtDetalleNegocio.Font = new System.Drawing.Font("Roboto Mono", 12.75F, System.Drawing.FontStyle.Bold);
+            this.txtDetalleNegocio.Location = new System.Drawing.Point(37, 18);
             this.txtDetalleNegocio.Name = "txtDetalleNegocio";
-            this.txtDetalleNegocio.Size = new System.Drawing.Size(137, 22);
+            this.txtDetalleNegocio.Size = new System.Drawing.Size(160, 23);
             this.txtDetalleNegocio.TabIndex = 58;
             this.txtDetalleNegocio.Text = "Detalle Negocio";
             // 

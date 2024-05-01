@@ -43,38 +43,31 @@ namespace POSSystem
             cboItbis.ValueMember = "Valor"; // Establece la propiedad ValueMember del ComboBox cboestatus para que el valor seleccionado sea el valor definido en la propiedad Valor de la clase OpcionCombo.
             cboItbis.SelectedIndex = 0;
 
+
+            // Listar los clientes en el dropdown
+            List<Cliente> listaClientes = new BL_Cliente().ListarClientes();
+            foreach (Cliente item in listaClientes)
+            {
+                cboCliente.Items.Add(new OpcionCombo()
+                {
+                    Valor = item.Cli_Id,
+                    Texto = item.Cli_Nombres + " "+ item.Cli_Apellidos
+                }) ;
+
+            }
+            cboCliente.DisplayMember = "Texto";
+            cboCliente.ValueMember = "Valor";
+            cboCliente.SelectedIndex = 0;
+
+            boxTotalPagar.Enabled = false;
+            boxTotalItbis.Enabled = false;
+
         }
 
         private Producto BuscarProductoPorCodigoBarras(string codigoBarras)
         {
             BL_Producto blProducto = new BL_Producto();
             Producto productoEncontrado = blProducto.BuscarProducto(codigoBarras);
-
-            // Convertir los valores numéricos
-            //int valorInventarioInicial = producto.Prod_StockInicial * producto.Prod_PrecioCompra;
-            //int valorInventarioActual = producto.Prod_StockActual * producto.Prod_PrecioCompra;
-
-
-            // Agregar las demás celdas a la fila
-            //dgvdata.Rows.Add(new object[] {
-            //    "", // Esto representa la primera columna (si hay una columna para el ID, por ejemplo)
-            //    productoEncontrado.Prod_Id,
-            //    producto.Prod_CodigoBarras,
-            //    producto.Prod_Barras,
-            //    producto.Prod_Nombre,
-            //    producto.oProd_Categoria_Id.Cat_Id,
-            //    producto.oProd_Categoria_Id.Cat_Nombre, // Asumiendo que el objeto Categoria tiene una propiedad Cat_Id
-            //    producto.Prod_Descripcion,
-            //    producto.Prod_StockInicial,
-            //    producto.Prod_StockActual,
-            //    "$" + producto.Prod_PrecioCompra,
-            //    "$" + producto.Prod_PrecioVenta,
-            //    "$" + valorInventarioInicial,
-            //    "$" + valorInventarioActual,
-            //    producto.Prod_Fecha.ToString("d")
-            //    });
-
-            //int rowIndex = dgvdata.Rows.Count - 1;
 
             return productoEncontrado;
         }
@@ -104,7 +97,7 @@ namespace POSSystem
             }
             else
             {
-                MessageBox.Show("Producto no encontrado.", "Búsqueda", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Producto no encontrado.", "Búsqueda", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 LimpiarCampos();
                 codigoBarras = null;
             }
@@ -115,27 +108,27 @@ namespace POSSystem
         {
             if (string.IsNullOrWhiteSpace(boxCodProducto.Text))
             {
-                MessageBox.Show("El código de producto está vacío.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("El código de producto está vacío.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else if (string.IsNullOrWhiteSpace(boxProducto.Text))
             {
-                MessageBox.Show("El campo de producto está vacío.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("El campo de producto está vacío.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else if (string.IsNullOrWhiteSpace(boxPrecio.Text))
             {
-                MessageBox.Show("El campo de precio está vacío.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("El campo de precio está vacío.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else if (string.IsNullOrWhiteSpace(boxStockActual.Text))
             {
-                MessageBox.Show("No hay stock disponible.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("No hay stock disponible.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else if (boxCantidad.Text == "0")
             {
-                MessageBox.Show("El campo de cantidad está vacío.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("El campo de cantidad está vacío.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else if (Convert.ToInt32(boxCantidad.Text) > Convert.ToInt32(boxStockActual.Text))
             {
-                MessageBox.Show("No hay stock", "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("No hay stock", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
             {
@@ -155,14 +148,16 @@ namespace POSSystem
                         {
                             row.Cells["Prod_Cantidad"].Value = cantidadExistente + cantidad;
                             decimal nuevoItbis = precio * (cantidadExistente + cantidad) * tasaItbis;
-                            decimal nuevoSubtotal = (precio * (cantidadExistente + cantidad)) + nuevoItbis;
-                            row.Cells["Prod_Itbis"].Value = nuevoItbis;
-                            row.Cells["Prod_Subtotal"].Value = nuevoSubtotal;
+                            decimal total = (precio * (cantidadExistente + cantidad)) + nuevoItbis;
+                            decimal subtotal = (cantidadExistente + cantidad) * precio;
+                            row.Cells["Prod_Itbis"].Value = Math.Round(nuevoItbis, 2);
+                            row.Cells["Prod_Total"].Value = Math.Round(total, 2);
+                            row.Cells["Prod_Subtotal"].Value = Math.Round(subtotal, 2);
                             ActualizarTotales();
                         }
                         else
                         {
-                            MessageBox.Show("Agregar esta cantidad supera el stock disponible.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            MessageBox.Show("Agregar esta cantidad supera el stock disponible.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
                         break;
                     }
@@ -171,15 +166,18 @@ namespace POSSystem
                 if (!productoEncontrado)
                 {
                     decimal itbis = precio * cantidad * tasaItbis;
-                    decimal subtotal = (precio * cantidad) + itbis;
+                    decimal total = (precio * cantidad) + itbis;
+                    decimal subtotal = cantidad * precio;
+
                     dgvdata.Rows.Add(new object[] {
-                "",
-                codigoProducto,
-                boxProducto.Text,
-                cantidad,
-                "$" + precio.ToString("N2"),
-                itbis,
-                subtotal
+                    "",
+                    codigoProducto,
+                    boxProducto.Text,
+                    cantidad,
+                    precio.ToString(),
+                    Math.Round(subtotal, 2),
+                    Math.Round(itbis, 2),
+                    Math.Round(total, 2)
             });
                     ActualizarTotales();
                 }
@@ -195,10 +193,10 @@ namespace POSSystem
             foreach (DataGridViewRow row in dgvdata.Rows)
             {
                 totalItbis += Convert.ToDecimal(row.Cells["Prod_Itbis"].Value.ToString());
-                totalAPagar += Convert.ToDecimal(row.Cells["Prod_Subtotal"].Value.ToString());
+                totalAPagar += Convert.ToDecimal(row.Cells["Prod_Total"].Value.ToString());
             }
-            boxTotalItbis.Text = totalItbis.ToString();
-            boxTotalPagar.Text = totalAPagar.ToString();
+            boxTotalItbis.Text = Math.Round(totalItbis, 2).ToString();
+            boxTotalPagar.Text = Math.Round(totalAPagar, 2).ToString();
         }
 
         private void dgvdata_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -215,13 +213,11 @@ namespace POSSystem
                 foreach (DataGridViewRow row in dgvdata.Rows)
                 {
                     totalItbis += Convert.ToDecimal(row.Cells["Prod_Itbis"].Value.ToString());
-                    totalAPagar += Convert.ToDecimal(row.Cells["Prod_Subtotal"].Value.ToString());
+                    totalAPagar += Convert.ToDecimal(row.Cells["Prod_Total"].Value.ToString());
                 }
 
-                boxTotalItbis.Text = totalItbis.ToString();
-                boxTotalPagar.Text = totalAPagar.ToString();
-
-
+                boxTotalItbis.Text = Math.Round(totalItbis, 2).ToString();
+                boxTotalPagar.Text = Math.Round(totalAPagar, 2).ToString();
             }
         }
 
@@ -244,5 +240,12 @@ namespace POSSystem
                 e.Handled = true; // Indica que el evento de pintado ha sido manejado
             }
         }
+
+        private void btnTotalizar_Click(object sender, EventArgs e)
+        {
+
+        }
+
+       
     }
 }

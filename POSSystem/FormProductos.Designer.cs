@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.cboCategoria = new System.Windows.Forms.ComboBox();
             this.txtBuscar = new System.Windows.Forms.Label();
             this.btnLimpiar = new FontAwesome.Sharp.IconButton();
@@ -40,6 +40,20 @@
             this.textId = new System.Windows.Forms.TextBox();
             this.txtListaUsuarios = new System.Windows.Forms.Label();
             this.dgvdata = new System.Windows.Forms.DataGridView();
+            this.btnSeleccionar = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.Prod_CodigoBarras = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Prod_Barras = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Prod_Nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Prod_Categoria_Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Prod_Categoria = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Prod_Descripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Prod_StockInicial = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Prod_StockActual = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Prod_PrecioCompra = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Prod_PrecioVenta = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Prod_ValorInventarioInicial = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Prod_ValorInventarioActual = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Prod_Fecha = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.txtDetalleProducto = new System.Windows.Forms.Label();
             this.btnInactivar = new FontAwesome.Sharp.IconButton();
             this.btnEditar = new FontAwesome.Sharp.IconButton();
@@ -58,38 +72,26 @@
             this.txtPrecioCompra = new System.Windows.Forms.Label();
             this.boxPrecioVenta = new System.Windows.Forms.TextBox();
             this.txtPrecioVenta = new System.Windows.Forms.Label();
-            this.btnSeleccionar = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.Prod_CodigoBarras = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Prod_Barras = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Prod_Nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Prod_Categoria_Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Prod_Categoria = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Prod_Descripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Prod_StockInicial = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Prod_StockActual = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Prod_PrecioCompra = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Prod_PrecioVenta = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Prod_ValorInventarioInicial = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Prod_ValorInventarioActual = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Prod_Fecha = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvdata)).BeginInit();
             this.SuspendLayout();
             // 
             // cboCategoria
             // 
             this.cboCategoria.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboCategoria.Font = new System.Drawing.Font("Roboto Mono", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboCategoria.FormattingEnabled = true;
-            this.cboCategoria.Location = new System.Drawing.Point(31, 168);
+            this.cboCategoria.Location = new System.Drawing.Point(31, 191);
             this.cboCategoria.Name = "cboCategoria";
-            this.cboCategoria.Size = new System.Drawing.Size(237, 21);
+            this.cboCategoria.Size = new System.Drawing.Size(237, 24);
             this.cboCategoria.TabIndex = 80;
             // 
             // txtBuscar
             // 
             this.txtBuscar.AutoSize = true;
-            this.txtBuscar.Location = new System.Drawing.Point(833, 28);
+            this.txtBuscar.Font = new System.Drawing.Font("Roboto Mono", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtBuscar.Location = new System.Drawing.Point(835, 20);
             this.txtBuscar.Name = "txtBuscar";
-            this.txtBuscar.Size = new System.Drawing.Size(61, 13);
+            this.txtBuscar.Size = new System.Drawing.Size(84, 16);
             this.txtBuscar.TabIndex = 79;
             this.txtBuscar.Text = "Buscar por:";
             // 
@@ -98,12 +100,13 @@
             this.btnLimpiar.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.btnLimpiar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnLimpiar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnLimpiar.Font = new System.Drawing.Font("Roboto Mono", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnLimpiar.ForeColor = System.Drawing.Color.DarkGray;
             this.btnLimpiar.IconChar = FontAwesome.Sharp.IconChar.Broom;
             this.btnLimpiar.IconColor = System.Drawing.Color.Black;
             this.btnLimpiar.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnLimpiar.IconSize = 20;
-            this.btnLimpiar.Location = new System.Drawing.Point(1106, 19);
+            this.btnLimpiar.Location = new System.Drawing.Point(1135, 13);
             this.btnLimpiar.Name = "btnLimpiar";
             this.btnLimpiar.Size = new System.Drawing.Size(36, 30);
             this.btnLimpiar.TabIndex = 78;
@@ -115,12 +118,13 @@
             this.btnBuscar.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.btnBuscar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnBuscar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnBuscar.Font = new System.Drawing.Font("Roboto Mono", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnBuscar.ForeColor = System.Drawing.Color.DarkGray;
             this.btnBuscar.IconChar = FontAwesome.Sharp.IconChar.MagnifyingGlass;
             this.btnBuscar.IconColor = System.Drawing.Color.Black;
             this.btnBuscar.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnBuscar.IconSize = 20;
-            this.btnBuscar.Location = new System.Drawing.Point(1064, 19);
+            this.btnBuscar.Location = new System.Drawing.Point(1093, 13);
             this.btnBuscar.Name = "btnBuscar";
             this.btnBuscar.Size = new System.Drawing.Size(36, 30);
             this.btnBuscar.TabIndex = 77;
@@ -129,42 +133,46 @@
             // 
             // boxBuscar
             // 
-            this.boxBuscar.Location = new System.Drawing.Point(893, 24);
+            this.boxBuscar.Font = new System.Drawing.Font("Roboto Mono", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.boxBuscar.Location = new System.Drawing.Point(922, 17);
             this.boxBuscar.Name = "boxBuscar";
-            this.boxBuscar.Size = new System.Drawing.Size(156, 20);
+            this.boxBuscar.Size = new System.Drawing.Size(156, 23);
             this.boxBuscar.TabIndex = 76;
             // 
             // cboBuscar
             // 
             this.cboBuscar.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboBuscar.Font = new System.Drawing.Font("Roboto Mono", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboBuscar.FormattingEnabled = true;
-            this.cboBuscar.Location = new System.Drawing.Point(654, 24);
+            this.cboBuscar.Location = new System.Drawing.Point(670, 16);
             this.cboBuscar.Name = "cboBuscar";
-            this.cboBuscar.Size = new System.Drawing.Size(156, 21);
+            this.cboBuscar.Size = new System.Drawing.Size(156, 24);
             this.cboBuscar.TabIndex = 75;
             // 
             // txtFiltrar
             // 
             this.txtFiltrar.AutoSize = true;
-            this.txtFiltrar.Location = new System.Drawing.Point(619, 28);
+            this.txtFiltrar.Font = new System.Drawing.Font("Roboto Mono", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtFiltrar.Location = new System.Drawing.Point(602, 20);
             this.txtFiltrar.Name = "txtFiltrar";
-            this.txtFiltrar.Size = new System.Drawing.Size(35, 13);
+            this.txtFiltrar.Size = new System.Drawing.Size(63, 16);
             this.txtFiltrar.TabIndex = 74;
             this.txtFiltrar.Text = "Filtrar:";
             // 
             // textId
             // 
-            this.textId.Location = new System.Drawing.Point(133, 40);
+            this.textId.Font = new System.Drawing.Font("Roboto Mono", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textId.Location = new System.Drawing.Point(133, 59);
             this.textId.Name = "textId";
             this.textId.ReadOnly = true;
-            this.textId.Size = new System.Drawing.Size(135, 20);
+            this.textId.Size = new System.Drawing.Size(135, 23);
             this.textId.TabIndex = 73;
             this.textId.Text = "0";
             // 
             // txtListaUsuarios
             // 
-            this.txtListaUsuarios.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
-            this.txtListaUsuarios.Location = new System.Drawing.Point(303, 22);
+            this.txtListaUsuarios.Font = new System.Drawing.Font("Roboto Mono", 12.75F, System.Drawing.FontStyle.Bold);
+            this.txtListaUsuarios.Location = new System.Drawing.Point(297, 16);
             this.txtListaUsuarios.Name = "txtListaUsuarios";
             this.txtListaUsuarios.Size = new System.Drawing.Size(212, 25);
             this.txtListaUsuarios.TabIndex = 72;
@@ -174,15 +182,15 @@
             // 
             this.dgvdata.AllowUserToAddRows = false;
             this.dgvdata.BackgroundColor = System.Drawing.SystemColors.ControlLight;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.Padding = new System.Windows.Forms.Padding(2);
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvdata.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.Padding = new System.Windows.Forms.Padding(2);
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvdata.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvdata.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvdata.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.btnSeleccionar,
@@ -204,206 +212,13 @@
             this.dgvdata.MultiSelect = false;
             this.dgvdata.Name = "dgvdata";
             this.dgvdata.ReadOnly = true;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.Black;
-            this.dgvdata.RowsDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
+            this.dgvdata.RowsDefaultCellStyle = dataGridViewCellStyle2;
             this.dgvdata.Size = new System.Drawing.Size(889, 460);
             this.dgvdata.TabIndex = 71;
             this.dgvdata.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvdata_CellContentClick);
             this.dgvdata.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.dgvdata_CellPainting);
-            // 
-            // txtDetalleProducto
-            // 
-            this.txtDetalleProducto.AutoSize = true;
-            this.txtDetalleProducto.BackColor = System.Drawing.Color.White;
-            this.txtDetalleProducto.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F);
-            this.txtDetalleProducto.Location = new System.Drawing.Point(27, 9);
-            this.txtDetalleProducto.Name = "txtDetalleProducto";
-            this.txtDetalleProducto.Size = new System.Drawing.Size(160, 22);
-            this.txtDetalleProducto.TabIndex = 70;
-            this.txtDetalleProducto.Text = "Registrar Producto";
-            // 
-            // btnInactivar
-            // 
-            this.btnInactivar.BackColor = System.Drawing.Color.Crimson;
-            this.btnInactivar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnInactivar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnInactivar.ForeColor = System.Drawing.Color.White;
-            this.btnInactivar.IconChar = FontAwesome.Sharp.IconChar.Trash;
-            this.btnInactivar.IconColor = System.Drawing.Color.White;
-            this.btnInactivar.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.btnInactivar.IconSize = 16;
-            this.btnInactivar.Location = new System.Drawing.Point(193, 350);
-            this.btnInactivar.Name = "btnInactivar";
-            this.btnInactivar.Size = new System.Drawing.Size(75, 30);
-            this.btnInactivar.TabIndex = 69;
-            this.btnInactivar.Text = "Eliminar";
-            this.btnInactivar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnInactivar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnInactivar.UseVisualStyleBackColor = false;
-            this.btnInactivar.Click += new System.EventHandler(this.btnInactivar_Click);
-            // 
-            // btnEditar
-            // 
-            this.btnEditar.BackColor = System.Drawing.Color.RoyalBlue;
-            this.btnEditar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnEditar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnEditar.ForeColor = System.Drawing.Color.White;
-            this.btnEditar.IconChar = FontAwesome.Sharp.IconChar.PenToSquare;
-            this.btnEditar.IconColor = System.Drawing.Color.White;
-            this.btnEditar.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.btnEditar.IconSize = 16;
-            this.btnEditar.Location = new System.Drawing.Point(112, 350);
-            this.btnEditar.Name = "btnEditar";
-            this.btnEditar.Size = new System.Drawing.Size(75, 30);
-            this.btnEditar.TabIndex = 68;
-            this.btnEditar.Text = "Editar";
-            this.btnEditar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnEditar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnEditar.UseVisualStyleBackColor = false;
-            this.btnEditar.Click += new System.EventHandler(this.btnEditar_Click);
-            // 
-            // btnGuardar
-            // 
-            this.btnGuardar.BackColor = System.Drawing.Color.ForestGreen;
-            this.btnGuardar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnGuardar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnGuardar.ForeColor = System.Drawing.Color.White;
-            this.btnGuardar.IconChar = FontAwesome.Sharp.IconChar.FloppyDisk;
-            this.btnGuardar.IconColor = System.Drawing.Color.White;
-            this.btnGuardar.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.btnGuardar.IconSize = 16;
-            this.btnGuardar.Location = new System.Drawing.Point(31, 350);
-            this.btnGuardar.Name = "btnGuardar";
-            this.btnGuardar.Size = new System.Drawing.Size(75, 30);
-            this.btnGuardar.TabIndex = 67;
-            this.btnGuardar.Text = "Guardar";
-            this.btnGuardar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnGuardar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnGuardar.UseVisualStyleBackColor = false;
-            this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
-            // 
-            // txtItbis
-            // 
-            this.txtItbis.AutoSize = true;
-            this.txtItbis.BackColor = System.Drawing.Color.White;
-            this.txtItbis.Location = new System.Drawing.Point(28, 203);
-            this.txtItbis.Name = "txtItbis";
-            this.txtItbis.Size = new System.Drawing.Size(0, 13);
-            this.txtItbis.TabIndex = 65;
-            // 
-            // boxDescripcion
-            // 
-            this.boxDescripcion.Location = new System.Drawing.Point(31, 117);
-            this.boxDescripcion.Name = "boxDescripcion";
-            this.boxDescripcion.Size = new System.Drawing.Size(237, 20);
-            this.boxDescripcion.TabIndex = 64;
-            // 
-            // boxNombre
-            // 
-            this.boxNombre.Location = new System.Drawing.Point(31, 66);
-            this.boxNombre.Name = "boxNombre";
-            this.boxNombre.Size = new System.Drawing.Size(237, 20);
-            this.boxNombre.TabIndex = 63;
-            // 
-            // txtCategoria
-            // 
-            this.txtCategoria.AutoSize = true;
-            this.txtCategoria.BackColor = System.Drawing.Color.White;
-            this.txtCategoria.Location = new System.Drawing.Point(28, 152);
-            this.txtCategoria.Name = "txtCategoria";
-            this.txtCategoria.Size = new System.Drawing.Size(52, 13);
-            this.txtCategoria.TabIndex = 62;
-            this.txtCategoria.Text = "Categoria";
-            // 
-            // txtDescripcion
-            // 
-            this.txtDescripcion.AutoSize = true;
-            this.txtDescripcion.BackColor = System.Drawing.Color.White;
-            this.txtDescripcion.Location = new System.Drawing.Point(28, 101);
-            this.txtDescripcion.Name = "txtDescripcion";
-            this.txtDescripcion.Size = new System.Drawing.Size(63, 13);
-            this.txtDescripcion.TabIndex = 61;
-            this.txtDescripcion.Text = "Descripcion";
-            // 
-            // txtNombre
-            // 
-            this.txtNombre.AutoSize = true;
-            this.txtNombre.BackColor = System.Drawing.Color.White;
-            this.txtNombre.Location = new System.Drawing.Point(28, 50);
-            this.txtNombre.Name = "txtNombre";
-            this.txtNombre.Size = new System.Drawing.Size(44, 13);
-            this.txtNombre.TabIndex = 60;
-            this.txtNombre.Text = "Nombre";
-            // 
-            // label2
-            // 
-            this.label2.BackColor = System.Drawing.Color.White;
-            this.label2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label2.Dock = System.Windows.Forms.DockStyle.Left;
-            this.label2.Location = new System.Drawing.Point(0, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(291, 514);
-            this.label2.TabIndex = 59;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(279, 117);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(0, 13);
-            this.label1.TabIndex = 58;
-            // 
-            // boxCantidadInicial
-            // 
-            this.boxCantidadInicial.Location = new System.Drawing.Point(31, 217);
-            this.boxCantidadInicial.Name = "boxCantidadInicial";
-            this.boxCantidadInicial.Size = new System.Drawing.Size(237, 20);
-            this.boxCantidadInicial.TabIndex = 82;
-            // 
-            // txtCantidadInicial
-            // 
-            this.txtCantidadInicial.AutoSize = true;
-            this.txtCantidadInicial.BackColor = System.Drawing.Color.White;
-            this.txtCantidadInicial.Location = new System.Drawing.Point(28, 201);
-            this.txtCantidadInicial.Name = "txtCantidadInicial";
-            this.txtCantidadInicial.Size = new System.Drawing.Size(49, 13);
-            this.txtCantidadInicial.TabIndex = 81;
-            this.txtCantidadInicial.Text = "Cantidad";
-            // 
-            // boxPrecioCompra
-            // 
-            this.boxPrecioCompra.Location = new System.Drawing.Point(31, 264);
-            this.boxPrecioCompra.Name = "boxPrecioCompra";
-            this.boxPrecioCompra.Size = new System.Drawing.Size(237, 20);
-            this.boxPrecioCompra.TabIndex = 84;
-            // 
-            // txtPrecioCompra
-            // 
-            this.txtPrecioCompra.AutoSize = true;
-            this.txtPrecioCompra.BackColor = System.Drawing.Color.White;
-            this.txtPrecioCompra.Location = new System.Drawing.Point(28, 248);
-            this.txtPrecioCompra.Name = "txtPrecioCompra";
-            this.txtPrecioCompra.Size = new System.Drawing.Size(136, 13);
-            this.txtPrecioCompra.TabIndex = 83;
-            this.txtPrecioCompra.Text = "Precio de Compra x Unidad";
-            // 
-            // boxPrecioVenta
-            // 
-            this.boxPrecioVenta.Location = new System.Drawing.Point(31, 312);
-            this.boxPrecioVenta.Name = "boxPrecioVenta";
-            this.boxPrecioVenta.Size = new System.Drawing.Size(237, 20);
-            this.boxPrecioVenta.TabIndex = 86;
-            // 
-            // txtPrecioVenta
-            // 
-            this.txtPrecioVenta.AutoSize = true;
-            this.txtPrecioVenta.BackColor = System.Drawing.Color.White;
-            this.txtPrecioVenta.Location = new System.Drawing.Point(28, 296);
-            this.txtPrecioVenta.Name = "txtPrecioVenta";
-            this.txtPrecioVenta.Size = new System.Drawing.Size(128, 13);
-            this.txtPrecioVenta.TabIndex = 85;
-            this.txtPrecioVenta.Text = "Precio de Venta x Unidad";
             // 
             // btnSeleccionar
             // 
@@ -493,6 +308,210 @@
             this.Prod_Fecha.HeaderText = "Fecha de Creación";
             this.Prod_Fecha.Name = "Prod_Fecha";
             this.Prod_Fecha.ReadOnly = true;
+            // 
+            // txtDetalleProducto
+            // 
+            this.txtDetalleProducto.AutoSize = true;
+            this.txtDetalleProducto.BackColor = System.Drawing.Color.White;
+            this.txtDetalleProducto.Font = new System.Drawing.Font("Roboto Mono", 12.75F, System.Drawing.FontStyle.Bold);
+            this.txtDetalleProducto.Location = new System.Drawing.Point(21, 17);
+            this.txtDetalleProducto.Name = "txtDetalleProducto";
+            this.txtDetalleProducto.Size = new System.Drawing.Size(190, 23);
+            this.txtDetalleProducto.TabIndex = 70;
+            this.txtDetalleProducto.Text = "Registrar Producto";
+            // 
+            // btnInactivar
+            // 
+            this.btnInactivar.BackColor = System.Drawing.Color.Crimson;
+            this.btnInactivar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnInactivar.Font = new System.Drawing.Font("Roboto Mono", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnInactivar.ForeColor = System.Drawing.Color.White;
+            this.btnInactivar.IconChar = FontAwesome.Sharp.IconChar.Trash;
+            this.btnInactivar.IconColor = System.Drawing.Color.White;
+            this.btnInactivar.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnInactivar.IconSize = 16;
+            this.btnInactivar.Location = new System.Drawing.Point(31, 405);
+            this.btnInactivar.Name = "btnInactivar";
+            this.btnInactivar.Size = new System.Drawing.Size(108, 30);
+            this.btnInactivar.TabIndex = 69;
+            this.btnInactivar.Text = "Eliminar";
+            this.btnInactivar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnInactivar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnInactivar.UseVisualStyleBackColor = false;
+            this.btnInactivar.Click += new System.EventHandler(this.btnInactivar_Click);
+            // 
+            // btnEditar
+            // 
+            this.btnEditar.BackColor = System.Drawing.Color.RoyalBlue;
+            this.btnEditar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnEditar.Font = new System.Drawing.Font("Roboto Mono", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEditar.ForeColor = System.Drawing.Color.White;
+            this.btnEditar.IconChar = FontAwesome.Sharp.IconChar.PenToSquare;
+            this.btnEditar.IconColor = System.Drawing.Color.White;
+            this.btnEditar.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnEditar.IconSize = 16;
+            this.btnEditar.Location = new System.Drawing.Point(160, 405);
+            this.btnEditar.Name = "btnEditar";
+            this.btnEditar.Size = new System.Drawing.Size(108, 30);
+            this.btnEditar.TabIndex = 68;
+            this.btnEditar.Text = "Editar";
+            this.btnEditar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnEditar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnEditar.UseVisualStyleBackColor = false;
+            this.btnEditar.Click += new System.EventHandler(this.btnEditar_Click);
+            // 
+            // btnGuardar
+            // 
+            this.btnGuardar.BackColor = System.Drawing.Color.ForestGreen;
+            this.btnGuardar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnGuardar.Font = new System.Drawing.Font("Roboto Mono", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnGuardar.ForeColor = System.Drawing.Color.White;
+            this.btnGuardar.IconChar = FontAwesome.Sharp.IconChar.FloppyDisk;
+            this.btnGuardar.IconColor = System.Drawing.Color.White;
+            this.btnGuardar.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnGuardar.IconSize = 16;
+            this.btnGuardar.Location = new System.Drawing.Point(31, 369);
+            this.btnGuardar.Name = "btnGuardar";
+            this.btnGuardar.Size = new System.Drawing.Size(237, 30);
+            this.btnGuardar.TabIndex = 67;
+            this.btnGuardar.Text = "Guardar";
+            this.btnGuardar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnGuardar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnGuardar.UseVisualStyleBackColor = false;
+            this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
+            // 
+            // txtItbis
+            // 
+            this.txtItbis.AutoSize = true;
+            this.txtItbis.BackColor = System.Drawing.Color.White;
+            this.txtItbis.Location = new System.Drawing.Point(28, 203);
+            this.txtItbis.Name = "txtItbis";
+            this.txtItbis.Size = new System.Drawing.Size(0, 13);
+            this.txtItbis.TabIndex = 65;
+            // 
+            // boxDescripcion
+            // 
+            this.boxDescripcion.Font = new System.Drawing.Font("Roboto Mono", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.boxDescripcion.Location = new System.Drawing.Point(31, 140);
+            this.boxDescripcion.Name = "boxDescripcion";
+            this.boxDescripcion.Size = new System.Drawing.Size(237, 23);
+            this.boxDescripcion.TabIndex = 64;
+            // 
+            // boxNombre
+            // 
+            this.boxNombre.Font = new System.Drawing.Font("Roboto Mono", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.boxNombre.Location = new System.Drawing.Point(31, 89);
+            this.boxNombre.Name = "boxNombre";
+            this.boxNombre.Size = new System.Drawing.Size(237, 23);
+            this.boxNombre.TabIndex = 63;
+            // 
+            // txtCategoria
+            // 
+            this.txtCategoria.AutoSize = true;
+            this.txtCategoria.BackColor = System.Drawing.Color.White;
+            this.txtCategoria.Font = new System.Drawing.Font("Roboto Mono", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCategoria.Location = new System.Drawing.Point(28, 175);
+            this.txtCategoria.Name = "txtCategoria";
+            this.txtCategoria.Size = new System.Drawing.Size(70, 16);
+            this.txtCategoria.TabIndex = 62;
+            this.txtCategoria.Text = "Categoria";
+            // 
+            // txtDescripcion
+            // 
+            this.txtDescripcion.AutoSize = true;
+            this.txtDescripcion.BackColor = System.Drawing.Color.White;
+            this.txtDescripcion.Font = new System.Drawing.Font("Roboto Mono", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtDescripcion.Location = new System.Drawing.Point(28, 124);
+            this.txtDescripcion.Name = "txtDescripcion";
+            this.txtDescripcion.Size = new System.Drawing.Size(84, 16);
+            this.txtDescripcion.TabIndex = 61;
+            this.txtDescripcion.Text = "Descripcion";
+            // 
+            // txtNombre
+            // 
+            this.txtNombre.AutoSize = true;
+            this.txtNombre.BackColor = System.Drawing.Color.White;
+            this.txtNombre.Font = new System.Drawing.Font("Roboto Mono", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtNombre.Location = new System.Drawing.Point(28, 73);
+            this.txtNombre.Name = "txtNombre";
+            this.txtNombre.Size = new System.Drawing.Size(49, 16);
+            this.txtNombre.TabIndex = 60;
+            this.txtNombre.Text = "Nombre";
+            // 
+            // label2
+            // 
+            this.label2.BackColor = System.Drawing.Color.White;
+            this.label2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label2.Dock = System.Windows.Forms.DockStyle.Left;
+            this.label2.Location = new System.Drawing.Point(0, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(291, 514);
+            this.label2.TabIndex = 59;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(279, 117);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(0, 13);
+            this.label1.TabIndex = 58;
+            // 
+            // boxCantidadInicial
+            // 
+            this.boxCantidadInicial.Font = new System.Drawing.Font("Roboto Mono", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.boxCantidadInicial.Location = new System.Drawing.Point(31, 240);
+            this.boxCantidadInicial.Name = "boxCantidadInicial";
+            this.boxCantidadInicial.Size = new System.Drawing.Size(237, 23);
+            this.boxCantidadInicial.TabIndex = 82;
+            // 
+            // txtCantidadInicial
+            // 
+            this.txtCantidadInicial.AutoSize = true;
+            this.txtCantidadInicial.BackColor = System.Drawing.Color.White;
+            this.txtCantidadInicial.Font = new System.Drawing.Font("Roboto Mono", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCantidadInicial.Location = new System.Drawing.Point(28, 224);
+            this.txtCantidadInicial.Name = "txtCantidadInicial";
+            this.txtCantidadInicial.Size = new System.Drawing.Size(63, 16);
+            this.txtCantidadInicial.TabIndex = 81;
+            this.txtCantidadInicial.Text = "Cantidad";
+            // 
+            // boxPrecioCompra
+            // 
+            this.boxPrecioCompra.Font = new System.Drawing.Font("Roboto Mono", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.boxPrecioCompra.Location = new System.Drawing.Point(31, 287);
+            this.boxPrecioCompra.Name = "boxPrecioCompra";
+            this.boxPrecioCompra.Size = new System.Drawing.Size(237, 23);
+            this.boxPrecioCompra.TabIndex = 84;
+            // 
+            // txtPrecioCompra
+            // 
+            this.txtPrecioCompra.AutoSize = true;
+            this.txtPrecioCompra.BackColor = System.Drawing.Color.White;
+            this.txtPrecioCompra.Font = new System.Drawing.Font("Roboto Mono", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPrecioCompra.Location = new System.Drawing.Point(28, 271);
+            this.txtPrecioCompra.Name = "txtPrecioCompra";
+            this.txtPrecioCompra.Size = new System.Drawing.Size(182, 16);
+            this.txtPrecioCompra.TabIndex = 83;
+            this.txtPrecioCompra.Text = "Precio de Compra x Unidad";
+            // 
+            // boxPrecioVenta
+            // 
+            this.boxPrecioVenta.Font = new System.Drawing.Font("Roboto Mono", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.boxPrecioVenta.Location = new System.Drawing.Point(31, 335);
+            this.boxPrecioVenta.Name = "boxPrecioVenta";
+            this.boxPrecioVenta.Size = new System.Drawing.Size(237, 23);
+            this.boxPrecioVenta.TabIndex = 86;
+            // 
+            // txtPrecioVenta
+            // 
+            this.txtPrecioVenta.AutoSize = true;
+            this.txtPrecioVenta.BackColor = System.Drawing.Color.White;
+            this.txtPrecioVenta.Font = new System.Drawing.Font("Roboto Mono", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPrecioVenta.Location = new System.Drawing.Point(28, 319);
+            this.txtPrecioVenta.Name = "txtPrecioVenta";
+            this.txtPrecioVenta.Size = new System.Drawing.Size(175, 16);
+            this.txtPrecioVenta.TabIndex = 85;
+            this.txtPrecioVenta.Text = "Precio de Venta x Unidad";
             // 
             // FormProductos
             // 

@@ -35,9 +35,7 @@ namespace POSSystem
             {
                 // Si el usuario existe se inicializa una nueva instancia de usuario
                 usuarioActual = objusuario;
-
             }
-
             InitializeComponent();
         }
 
@@ -56,7 +54,6 @@ namespace POSSystem
                     iconmenu.Visible = false;
                 }
             }
-
             // Se muestra el usuario actual en la esquina superior derecha
             UsuarioActual.Text = usuarioActual.Usu_NombreCompleto;
         }

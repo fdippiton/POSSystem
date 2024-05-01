@@ -28,14 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.txtListaProductosInactivos = new System.Windows.Forms.Label();
             this.dgvdata = new System.Windows.Forms.DataGridView();
-            this.btnVaciarRegistros = new FontAwesome.Sharp.IconButton();
-            this.EliminarRegistro = new FontAwesome.Sharp.IconButton();
-            this.txtProductoSeleccionado = new System.Windows.Forms.Label();
-            this.txtId = new System.Windows.Forms.Label();
             this.btnSeleccionar = new System.Windows.Forms.DataGridViewButtonColumn();
             this.Prod_CodigoBarras = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Prod_Barras = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -50,15 +46,19 @@
             this.Prod_ValorInventarioInicial = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Prod_ValorInventarioActual = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Prod_Fecha = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnVaciarRegistros = new FontAwesome.Sharp.IconButton();
+            this.EliminarRegistro = new FontAwesome.Sharp.IconButton();
+            this.txtProductoSeleccionado = new System.Windows.Forms.Label();
+            this.txtId = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvdata)).BeginInit();
             this.SuspendLayout();
             // 
             // txtListaProductosInactivos
             // 
-            this.txtListaProductosInactivos.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
-            this.txtListaProductosInactivos.Location = new System.Drawing.Point(12, 9);
+            this.txtListaProductosInactivos.Font = new System.Drawing.Font("Roboto Mono", 12.75F, System.Drawing.FontStyle.Bold);
+            this.txtListaProductosInactivos.Location = new System.Drawing.Point(12, 10);
             this.txtListaProductosInactivos.Name = "txtListaProductosInactivos";
-            this.txtListaProductosInactivos.Size = new System.Drawing.Size(389, 25);
+            this.txtListaProductosInactivos.Size = new System.Drawing.Size(486, 25);
             this.txtListaProductosInactivos.TabIndex = 81;
             this.txtListaProductosInactivos.Text = "Lista de Productos Inactivos y Agotados";
             // 
@@ -66,15 +66,15 @@
             // 
             this.dgvdata.AllowUserToAddRows = false;
             this.dgvdata.BackgroundColor = System.Drawing.SystemColors.ControlLight;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.Padding = new System.Windows.Forms.Padding(2);
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvdata.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle5.Padding = new System.Windows.Forms.Padding(2);
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvdata.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
             this.dgvdata.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvdata.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.btnSeleccionar,
@@ -96,70 +96,13 @@
             this.dgvdata.MultiSelect = false;
             this.dgvdata.Name = "dgvdata";
             this.dgvdata.ReadOnly = true;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
-            this.dgvdata.RowsDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.Black;
+            this.dgvdata.RowsDefaultCellStyle = dataGridViewCellStyle6;
             this.dgvdata.Size = new System.Drawing.Size(1181, 473);
             this.dgvdata.TabIndex = 80;
             this.dgvdata.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvdata_CellContentClick);
             this.dgvdata.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.dgvdata_CellPainting);
-            // 
-            // btnVaciarRegistros
-            // 
-            this.btnVaciarRegistros.BackColor = System.Drawing.Color.Crimson;
-            this.btnVaciarRegistros.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnVaciarRegistros.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnVaciarRegistros.ForeColor = System.Drawing.Color.White;
-            this.btnVaciarRegistros.IconChar = FontAwesome.Sharp.IconChar.Trash;
-            this.btnVaciarRegistros.IconColor = System.Drawing.Color.White;
-            this.btnVaciarRegistros.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.btnVaciarRegistros.IconSize = 16;
-            this.btnVaciarRegistros.Location = new System.Drawing.Point(1062, 6);
-            this.btnVaciarRegistros.Name = "btnVaciarRegistros";
-            this.btnVaciarRegistros.Size = new System.Drawing.Size(107, 30);
-            this.btnVaciarRegistros.TabIndex = 82;
-            this.btnVaciarRegistros.Text = "Vaciar registros";
-            this.btnVaciarRegistros.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnVaciarRegistros.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnVaciarRegistros.UseVisualStyleBackColor = false;
-            this.btnVaciarRegistros.Click += new System.EventHandler(this.btnVaciarRegistros_Click);
-            // 
-            // EliminarRegistro
-            // 
-            this.EliminarRegistro.BackColor = System.Drawing.Color.Black;
-            this.EliminarRegistro.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.EliminarRegistro.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.EliminarRegistro.ForeColor = System.Drawing.Color.White;
-            this.EliminarRegistro.IconChar = FontAwesome.Sharp.IconChar.Trash;
-            this.EliminarRegistro.IconColor = System.Drawing.Color.White;
-            this.EliminarRegistro.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.EliminarRegistro.IconSize = 16;
-            this.EliminarRegistro.Location = new System.Drawing.Point(917, 6);
-            this.EliminarRegistro.Name = "EliminarRegistro";
-            this.EliminarRegistro.Size = new System.Drawing.Size(33, 30);
-            this.EliminarRegistro.TabIndex = 83;
-            this.EliminarRegistro.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.EliminarRegistro.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.EliminarRegistro.UseVisualStyleBackColor = false;
-            this.EliminarRegistro.Click += new System.EventHandler(this.EliminarRegistro_Click);
-            // 
-            // txtProductoSeleccionado
-            // 
-            this.txtProductoSeleccionado.AutoSize = true;
-            this.txtProductoSeleccionado.Location = new System.Drawing.Point(739, 15);
-            this.txtProductoSeleccionado.Name = "txtProductoSeleccionado";
-            this.txtProductoSeleccionado.Size = new System.Drawing.Size(119, 13);
-            this.txtProductoSeleccionado.TabIndex = 84;
-            this.txtProductoSeleccionado.Text = "Producto seleccionado:";
-            // 
-            // txtId
-            // 
-            this.txtId.AutoSize = true;
-            this.txtId.Location = new System.Drawing.Point(864, 15);
-            this.txtId.Name = "txtId";
-            this.txtId.Size = new System.Drawing.Size(47, 13);
-            this.txtId.TabIndex = 85;
-            this.txtId.Text = "Ninguno";
             // 
             // btnSeleccionar
             // 
@@ -249,6 +192,65 @@
             this.Prod_Fecha.HeaderText = "Fecha de Creación";
             this.Prod_Fecha.Name = "Prod_Fecha";
             this.Prod_Fecha.ReadOnly = true;
+            // 
+            // btnVaciarRegistros
+            // 
+            this.btnVaciarRegistros.BackColor = System.Drawing.Color.Crimson;
+            this.btnVaciarRegistros.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnVaciarRegistros.Font = new System.Drawing.Font("Roboto Mono", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnVaciarRegistros.ForeColor = System.Drawing.Color.White;
+            this.btnVaciarRegistros.IconChar = FontAwesome.Sharp.IconChar.Trash;
+            this.btnVaciarRegistros.IconColor = System.Drawing.Color.White;
+            this.btnVaciarRegistros.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnVaciarRegistros.IconSize = 16;
+            this.btnVaciarRegistros.Location = new System.Drawing.Point(984, 7);
+            this.btnVaciarRegistros.Name = "btnVaciarRegistros";
+            this.btnVaciarRegistros.Size = new System.Drawing.Size(185, 30);
+            this.btnVaciarRegistros.TabIndex = 82;
+            this.btnVaciarRegistros.Text = "Vaciar registros";
+            this.btnVaciarRegistros.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnVaciarRegistros.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnVaciarRegistros.UseVisualStyleBackColor = false;
+            this.btnVaciarRegistros.Click += new System.EventHandler(this.btnVaciarRegistros_Click);
+            // 
+            // EliminarRegistro
+            // 
+            this.EliminarRegistro.BackColor = System.Drawing.Color.Black;
+            this.EliminarRegistro.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.EliminarRegistro.Font = new System.Drawing.Font("Roboto Mono", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.EliminarRegistro.ForeColor = System.Drawing.Color.White;
+            this.EliminarRegistro.IconChar = FontAwesome.Sharp.IconChar.Trash;
+            this.EliminarRegistro.IconColor = System.Drawing.Color.White;
+            this.EliminarRegistro.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.EliminarRegistro.IconSize = 16;
+            this.EliminarRegistro.Location = new System.Drawing.Point(887, 7);
+            this.EliminarRegistro.Name = "EliminarRegistro";
+            this.EliminarRegistro.Size = new System.Drawing.Size(43, 30);
+            this.EliminarRegistro.TabIndex = 83;
+            this.EliminarRegistro.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.EliminarRegistro.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.EliminarRegistro.UseVisualStyleBackColor = false;
+            this.EliminarRegistro.Click += new System.EventHandler(this.EliminarRegistro_Click);
+            // 
+            // txtProductoSeleccionado
+            // 
+            this.txtProductoSeleccionado.AutoSize = true;
+            this.txtProductoSeleccionado.Font = new System.Drawing.Font("Roboto Mono", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtProductoSeleccionado.Location = new System.Drawing.Point(570, 14);
+            this.txtProductoSeleccionado.Name = "txtProductoSeleccionado";
+            this.txtProductoSeleccionado.Size = new System.Drawing.Size(161, 16);
+            this.txtProductoSeleccionado.TabIndex = 84;
+            this.txtProductoSeleccionado.Text = "Producto seleccionado:";
+            // 
+            // txtId
+            // 
+            this.txtId.AutoSize = true;
+            this.txtId.Font = new System.Drawing.Font("Roboto Mono", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtId.Location = new System.Drawing.Point(737, 14);
+            this.txtId.Name = "txtId";
+            this.txtId.Size = new System.Drawing.Size(56, 16);
+            this.txtId.TabIndex = 85;
+            this.txtId.Text = "Ninguno";
             // 
             // FormProductosInactivos
             // 
