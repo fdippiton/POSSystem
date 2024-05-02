@@ -61,6 +61,7 @@ namespace POSSystem
 
             boxTotalPagar.Enabled = false;
             boxTotalItbis.Enabled = false;
+            boxCambio.Enabled = false;
 
         }
 
@@ -80,6 +81,8 @@ namespace POSSystem
             boxStockActual.Clear();
             boxStockActual.Clear();
             boxCantidad.Value = 0;
+            boxCambio.Clear();
+            boxPagarCon.Clear();
         }
 
         private void btnBuscarCodProducto_Click(object sender, EventArgs e)
@@ -243,9 +246,30 @@ namespace POSSystem
 
         private void btnTotalizar_Click(object sender, EventArgs e)
         {
+            if (string.IsNullOrWhiteSpace(boxPagarCon.Text))
+            {
+                MessageBox.Show("El campo pagar con esta vacio.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            } else if (string.IsNullOrWhiteSpace(boxTotalPagar.Text))
+            {
+                MessageBox.Show("No tiene productos en detalle", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            } else
+            {
+                decimal pagarCon = Convert.ToDecimal(boxPagarCon.Text);
+                decimal cambio = pagarCon - Convert.ToDecimal(boxTotalPagar.Text);
+                boxCambio.Text = Math.Round(cambio, 2).ToString();
 
+            }
         }
 
-       
+        private void btnGenerarVenta_Click(object sender, EventArgs e)
+        {
+            Venta venta = new Venta { 
+                Ven_Fecha = dateTimePicker.Value,
+                Ven_Cliente_Id = new Cliente { Cli_Id = Convert.ToInt32(((OpcionCombo)cboCliente.SelectedItem).Valor) },
+                
+
+
+            };
+        }
     }
 }

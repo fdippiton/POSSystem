@@ -47,6 +47,7 @@
     <Compile Include="BL_Producto.cs" />
     <Compile Include="BL_Rol.cs" />
     <Compile Include="BL_Usuario.cs" />
+    <Compile Include="BL_Venta.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

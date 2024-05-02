@@ -19,6 +19,7 @@ namespace POSSystem
         private static IconMenuItem MenuActivo = null;
         private static Form FormularioActivo = null;
 
+
         // Se le pasa el usuario
         public Inicio(Usuario objusuario = null)
         {
@@ -30,6 +31,8 @@ namespace POSSystem
                     Usu_NombreCompleto = "Usuario Admin",
                     Usu_Id = 1
                 };
+
+       
             }
             else
             {
@@ -37,6 +40,7 @@ namespace POSSystem
                 usuarioActual = objusuario;
             }
             InitializeComponent();
+            
         }
 
         private void Inicio_Load(object sender, EventArgs e)
@@ -85,6 +89,8 @@ namespace POSSystem
 
             contenedor.Controls.Add(formulario); // Agrega el formulario al contenedor especificado (contenedor). Esto permite que el formulario se muestre dentro del contenedor.
             formulario.Show(); // Finalmente, muestra el formulario.
+
+         
         }
 
         private void menuUsuarios_Click(object sender, EventArgs e)

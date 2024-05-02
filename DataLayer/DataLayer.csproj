@@ -49,6 +49,7 @@
     <Compile Include="DL_Producto.cs" />
     <Compile Include="DL_Rol.cs" />
     <Compile Include="DL_Usuario.cs" />
+    <Compile Include="DL_Venta.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -16,27 +16,19 @@ namespace EntityLayer
         public int Ven_Id { get; set; }
 
         [Required]
-        public Cliente oVen_Cliente_Id { get; set; }
+        public Cliente Ven_Cliente_Id { get; set; }
 
         [Required]
-        public Usuario oVen_Usuario_Id { get; set; }
+        public int Ven_Usuario_Id { get; set; }
 
         [Required]
         public DateTime Ven_Fecha { get; set; }
 
         [Required]
-        public int Ven_Subtotal { get; set; }
-
-        public int? Ven_Itbis { get; set; }
+        public decimal Ven_TotalItbis { get; set; }
 
         [Required]
-        public int Ven_Total { get; set; }
-
-        [Required]
-        public int Ven_MontoPago { get; set; }
-
-        [Required]
-        public int Ven_MontoCambio { get; set; }
+        public decimal Ven_MontoTotal { get; set; }
 
         [Required]
         [StringLength(1)]

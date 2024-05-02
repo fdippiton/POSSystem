@@ -119,6 +119,7 @@ namespace POSSystem
                 // Agregar relleno a la imagen en la celda
                 int padding = 5; // Puedes ajustar este valor según tu preferencia
                 dgvdata.Rows[rowIndex].Cells["Prod_Barras"].Style.Padding = new Padding(padding);
+                dgvdata.Rows[rowIndex].Height = 30;
             }
         }
 
