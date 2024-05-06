@@ -17,8 +17,10 @@ namespace POSSystem
 {
     public partial class FormVentas : Form
     {
+        public int UsuarioId { get; set; }
         private bool seleccionado = true; // Cambiado a true
         private int rowIndexSelected = -1;
+
 
         public FormVentas()
         {
@@ -263,13 +265,83 @@ namespace POSSystem
 
         private void btnGenerarVenta_Click(object sender, EventArgs e)
         {
-            Venta venta = new Venta { 
+            BL_Venta bl_Venta = new BL_Venta();
+            // Crear una lista de detalles de venta
+            List<DetalleVenta> detallesVenta = new List<DetalleVenta>();
+
+            // Aquí debes llenar la lista de detalles de venta con los productos vendidos. 
+            // Puedes obtener esta información de algún control de tu formulario, como un DataGridView o una lista de productos seleccionados.
+
+            // Ejemplo de cómo podrías llenar la lista de detalles de venta desde un DataGridView:
+            foreach (DataGridViewRow fila in dgvdata.Rows)
+            {
+                // Obtener los valores de la fila del DataGridView
+                string productoCodigo = fila.Cells["Prod_CodigoBarras"].Value.ToString();
+                string Producto = fila.Cells["Prod_Nombre"].Value.ToString();
+                int cantidad = Convert.ToInt32(fila.Cells["Prod_Cantidad"].Value);
+                decimal precioVenta = Convert.ToDecimal(fila.Cells["Prod_PrecioVenta"].Value);
+                decimal subtotal = Convert.ToDecimal(fila.Cells["Prod_Subtotal"].Value) ;
+                decimal itbis = Convert.ToDecimal(fila.Cells["Prod_Itbis"].Value);
+                decimal total = Convert.ToDecimal(fila.Cells["Prod_Total"].Value);
+
+                // Crear un objeto DetalleVenta y agregarlo a la lista
+                DetalleVenta detalle = new DetalleVenta
+                {
+                    DetV_Producto_CodigoBarras = new Producto { Prod_CodigoBarras = productoCodigo },
+                    DetV_Cantidad = cantidad,
+                    DetV_Subtotal = subtotal,
+                    DetV_Itbis = itbis,
+                    DetV_Total = total,
+                };
+                detallesVenta.Add(detalle);
+            }
+
+            Venta venta = new Venta
+            {
                 Ven_Fecha = dateTimePicker.Value,
                 Ven_Cliente_Id = new Cliente { Cli_Id = Convert.ToInt32(((OpcionCombo)cboCliente.SelectedItem).Valor) },
-                
-
-
+                Ven_Usuario_Id = UsuarioId,
+                Ven_TotalItbis = Convert.ToDecimal(boxTotalItbis.Text),
+                Ven_MontoTotal = Convert.ToDecimal(boxTotalPagar.Text),
             };
+
+            Console.WriteLine(venta);
+            Console.WriteLine(detallesVenta);
+
+            if (string.IsNullOrWhiteSpace(boxTotalItbis.Text))
+            {
+                MessageBox.Show("El campo total Itbis esta vacio.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            }
+            else if (string.IsNullOrWhiteSpace(boxTotalPagar.Text))
+            {
+                MessageBox.Show("El campo total a pagar esta vacio.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else if (string.IsNullOrWhiteSpace(boxPagarCon.Text))
+            {
+                MessageBox.Show("El campo pagar con esta vacio.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                bool resultado = bl_Venta.GenerarVenta(venta, detallesVenta);
+
+                // Verificar si el usuario fue agregado correctamente
+                if (resultado)
+                {
+                    MessageBox.Show("Venta generada correctamente.", "Información");
+                    dgvdata.Rows.Clear();
+                    boxTotalItbis.Text = "";
+                    boxTotalPagar.Text = "";
+                    LimpiarCampos();
+                }
+                else
+                {
+                    // Hubo un error al crear el usuario
+                    MessageBox.Show("Error al generar venta.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
         }
+
+
     }
 }

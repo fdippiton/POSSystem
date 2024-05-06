@@ -66,6 +66,14 @@ namespace POSSystem
         // Esto define una función llamada AbrirFormulario que toma dos parámetros: menu, que parece ser un elemento de menú, y formulario, que es un objeto de tipo Form
         private void AbrirFormulario(IconMenuItem menu, Form formulario)
         {
+
+
+            if (formulario is FormVentas)
+            {
+                // Si el formulario es de tipo menuVentas, establece la propiedad NombreCompletoUsuario con el nombre completo del usuario actual
+                ((FormVentas)formulario).UsuarioId = usuarioActual.Usu_Id;
+            }
+
             // Esta línea comprueba si hay algún elemento de menú activo actualmente (almacenado en una variable llamada MenuActivo). Si hay uno, cambia su color de fondo a blanco.
             if (MenuActivo != null)
             {
