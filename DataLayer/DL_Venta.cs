@@ -33,6 +33,7 @@ namespace DataLayer
                         foreach (var detalle in detallesVenta)
                         {
                             InsertarDetalleVenta(conexion, transaction, ventaId, detalle);
+                            ActualizarStockProducto(conexion, transaction, detalle.DetV_Producto_CodigoBarras.Prod_CodigoBarras, detalle.DetV_Cantidad);
                         }
 
                         // Confirmar la transacción
@@ -110,6 +111,33 @@ namespace DataLayer
 
             cmdDetalle.ExecuteNonQuery();
         }
+
+
+        private void ActualizarStockProducto(SqlConnection conexion, SqlTransaction transaction, string codigoBarrasProducto, int cantidadVendida)
+        {
+            // Actualizar el stock actual del producto
+            StringBuilder queryActualizarStock = new StringBuilder();
+            queryActualizarStock.AppendLine("UPDATE Productos SET Prod_StockActual = Prod_StockActual - @CantidadVendida WHERE Prod_CodigoBarras = @CodigoBarrasProducto;");
+            SqlCommand cmdActualizarStock = new SqlCommand(queryActualizarStock.ToString(), conexion, transaction);
+            cmdActualizarStock.Parameters.AddWithValue("@CantidadVendida", cantidadVendida);
+            cmdActualizarStock.Parameters.AddWithValue("@CodigoBarrasProducto", codigoBarrasProducto);
+            cmdActualizarStock.ExecuteNonQuery();
+
+            // Consultar el nuevo stock actual del producto después de la venta
+            SqlCommand cmdConsultaStock = new SqlCommand("SELECT Prod_StockActual FROM Productos WHERE Prod_CodigoBarras = @CodigoBarrasProducto;", conexion, transaction);
+            cmdConsultaStock.Parameters.AddWithValue("@CodigoBarrasProducto", codigoBarrasProducto);
+            int stockActual = Convert.ToInt32(cmdConsultaStock.ExecuteScalar());
+
+            // Actualizar el estado del producto según el stock actual
+            string nuevoEstatus = stockActual <= 0 ? "I" : "A";
+            StringBuilder queryActualizarEstatus = new StringBuilder();
+            queryActualizarEstatus.AppendLine("UPDATE Productos SET Prod_Estatus = @NuevoEstatus WHERE Prod_CodigoBarras = @CodigoBarrasProducto;");
+            SqlCommand cmdActualizarEstatus = new SqlCommand(queryActualizarEstatus.ToString(), conexion, transaction);
+            cmdActualizarEstatus.Parameters.AddWithValue("@NuevoEstatus", nuevoEstatus);
+            cmdActualizarEstatus.Parameters.AddWithValue("@CodigoBarrasProducto", codigoBarrasProducto);
+            cmdActualizarEstatus.ExecuteNonQuery();
+        }
+
 
     }
 }

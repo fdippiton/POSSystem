@@ -490,9 +490,9 @@
             this.txtPrecioCompra.Font = new System.Drawing.Font("Roboto Mono", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtPrecioCompra.Location = new System.Drawing.Point(28, 271);
             this.txtPrecioCompra.Name = "txtPrecioCompra";
-            this.txtPrecioCompra.Size = new System.Drawing.Size(182, 16);
+            this.txtPrecioCompra.Size = new System.Drawing.Size(147, 16);
             this.txtPrecioCompra.TabIndex = 83;
-            this.txtPrecioCompra.Text = "Precio de Compra x Unidad";
+            this.txtPrecioCompra.Text = "Precio de Compra c/u";
             // 
             // boxPrecioVenta
             // 
@@ -509,9 +509,9 @@
             this.txtPrecioVenta.Font = new System.Drawing.Font("Roboto Mono", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtPrecioVenta.Location = new System.Drawing.Point(28, 319);
             this.txtPrecioVenta.Name = "txtPrecioVenta";
-            this.txtPrecioVenta.Size = new System.Drawing.Size(175, 16);
+            this.txtPrecioVenta.Size = new System.Drawing.Size(140, 16);
             this.txtPrecioVenta.TabIndex = 85;
-            this.txtPrecioVenta.Text = "Precio de Venta x Unidad";
+            this.txtPrecioVenta.Text = "Precio de Venta c/u";
             // 
             // FormProductos
             // 
