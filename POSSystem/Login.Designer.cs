@@ -88,7 +88,7 @@
             this.contrasena.Location = new System.Drawing.Point(572, 236);
             this.contrasena.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.contrasena.Name = "contrasena";
-            this.contrasena.Size = new System.Drawing.Size(77, 16);
+            this.contrasena.Size = new System.Drawing.Size(99, 20);
             this.contrasena.TabIndex = 15;
             this.contrasena.Text = "Contraseña";
             // 
@@ -99,7 +99,7 @@
             this.documentoTitulo.Location = new System.Drawing.Point(572, 169);
             this.documentoTitulo.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.documentoTitulo.Name = "documentoTitulo";
-            this.documentoTitulo.Size = new System.Drawing.Size(98, 16);
+            this.documentoTitulo.Size = new System.Drawing.Size(126, 20);
             this.documentoTitulo.TabIndex = 14;
             this.documentoTitulo.Text = "No. Documento";
             // 
@@ -110,7 +110,7 @@
             this.boxContrasena.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.boxContrasena.Name = "boxContrasena";
             this.boxContrasena.PasswordChar = '*';
-            this.boxContrasena.Size = new System.Drawing.Size(367, 23);
+            this.boxContrasena.Size = new System.Drawing.Size(367, 27);
             this.boxContrasena.TabIndex = 13;
             // 
             // boxDocumento
@@ -119,7 +119,7 @@
             this.boxDocumento.Location = new System.Drawing.Point(572, 187);
             this.boxDocumento.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.boxDocumento.Name = "boxDocumento";
-            this.boxDocumento.Size = new System.Drawing.Size(367, 23);
+            this.boxDocumento.Size = new System.Drawing.Size(367, 27);
             this.boxDocumento.TabIndex = 12;
             // 
             // iconPictureBox1
@@ -146,7 +146,7 @@
             this.logintitulo.Location = new System.Drawing.Point(91, 287);
             this.logintitulo.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.logintitulo.Name = "logintitulo";
-            this.logintitulo.Size = new System.Drawing.Size(120, 26);
+            this.logintitulo.Size = new System.Drawing.Size(150, 33);
             this.logintitulo.TabIndex = 10;
             this.logintitulo.Text = "POSSystem";
             this.logintitulo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -170,14 +170,14 @@
             this.label2.Location = new System.Drawing.Point(91, 326);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(120, 18);
+            this.label2.Size = new System.Drawing.Size(150, 23);
             this.label2.TabIndex = 18;
             this.label2.Text = "Punto de Venta";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // Login
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1181, 591);
             this.Controls.Add(this.label2);

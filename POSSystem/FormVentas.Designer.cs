@@ -28,12 +28,20 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label1 = new System.Windows.Forms.Label();
             this.txtInfoCliente = new System.Windows.Forms.Label();
             this.txtFecha = new System.Windows.Forms.Label();
             this.dgvdata = new System.Windows.Forms.DataGridView();
+            this.btnEliminar = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.Prod_CodigoBarras = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Prod_Nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Prod_Cantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Prod_PrecioVenta = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Prod_Subtotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Prod_Itbis = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Prod_Total = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.txtRegistrarVenta = new System.Windows.Forms.Label();
             this.txtInfoVenta = new System.Windows.Forms.Label();
             this.txtNombreCompleto = new System.Windows.Forms.Label();
@@ -64,14 +72,6 @@
             this.btnAñadir = new FontAwesome.Sharp.IconButton();
             this.btnTotalizar = new FontAwesome.Sharp.IconButton();
             this.cboCliente = new System.Windows.Forms.ComboBox();
-            this.btnEliminar = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.Prod_CodigoBarras = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Prod_Nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Prod_Cantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Prod_PrecioVenta = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Prod_Subtotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Prod_Itbis = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Prod_Total = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvdata)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.boxCantidad)).BeginInit();
             this.SuspendLayout();
@@ -80,9 +80,10 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Roboto Mono", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(122, 100);
+            this.label1.Location = new System.Drawing.Point(163, 123);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(0, 16);
+            this.label1.Size = new System.Drawing.Size(0, 20);
             this.label1.TabIndex = 1;
             // 
             // txtInfoCliente
@@ -90,9 +91,10 @@
             this.txtInfoCliente.AutoSize = true;
             this.txtInfoCliente.BackColor = System.Drawing.Color.Transparent;
             this.txtInfoCliente.Font = new System.Drawing.Font("Roboto Mono", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtInfoCliente.Location = new System.Drawing.Point(254, 51);
+            this.txtInfoCliente.Location = new System.Drawing.Point(339, 63);
+            this.txtInfoCliente.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.txtInfoCliente.Name = "txtInfoCliente";
-            this.txtInfoCliente.Size = new System.Drawing.Size(140, 16);
+            this.txtInfoCliente.Size = new System.Drawing.Size(180, 20);
             this.txtInfoCliente.TabIndex = 105;
             this.txtInfoCliente.Text = "Información Cliente";
             // 
@@ -101,9 +103,10 @@
             this.txtFecha.AutoSize = true;
             this.txtFecha.BackColor = System.Drawing.Color.Transparent;
             this.txtFecha.Font = new System.Drawing.Font("Roboto Mono", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtFecha.Location = new System.Drawing.Point(32, 71);
+            this.txtFecha.Location = new System.Drawing.Point(43, 87);
+            this.txtFecha.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.txtFecha.Name = "txtFecha";
-            this.txtFecha.Size = new System.Drawing.Size(49, 16);
+            this.txtFecha.Size = new System.Drawing.Size(63, 20);
             this.txtFecha.TabIndex = 103;
             this.txtFecha.Text = "Fecha:";
             // 
@@ -111,15 +114,15 @@
             // 
             this.dgvdata.AllowUserToAddRows = false;
             this.dgvdata.BackgroundColor = System.Drawing.SystemColors.ControlLight;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.Padding = new System.Windows.Forms.Padding(2);
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvdata.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.Padding = new System.Windows.Forms.Padding(2);
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvdata.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvdata.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvdata.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.btnEliminar,
@@ -130,27 +133,94 @@
             this.Prod_Subtotal,
             this.Prod_Itbis,
             this.Prod_Total});
-            this.dgvdata.Location = new System.Drawing.Point(34, 192);
-            this.dgvdata.MinimumSize = new System.Drawing.Size(0, 28);
+            this.dgvdata.Location = new System.Drawing.Point(45, 236);
+            this.dgvdata.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dgvdata.MinimumSize = new System.Drawing.Size(0, 34);
             this.dgvdata.MultiSelect = false;
             this.dgvdata.Name = "dgvdata";
             this.dgvdata.ReadOnly = true;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.Black;
-            this.dgvdata.RowsDefaultCellStyle = dataGridViewCellStyle4;
-            this.dgvdata.Size = new System.Drawing.Size(825, 278);
+            this.dgvdata.RowHeadersWidth = 51;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
+            this.dgvdata.RowsDefaultCellStyle = dataGridViewCellStyle2;
+            this.dgvdata.Size = new System.Drawing.Size(1100, 342);
             this.dgvdata.TabIndex = 99;
             this.dgvdata.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvdata_CellContentClick);
             this.dgvdata.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.dgvdata_CellPainting);
+            // 
+            // btnEliminar
+            // 
+            this.btnEliminar.HeaderText = "";
+            this.btnEliminar.MinimumWidth = 6;
+            this.btnEliminar.Name = "btnEliminar";
+            this.btnEliminar.ReadOnly = true;
+            this.btnEliminar.Width = 25;
+            // 
+            // Prod_CodigoBarras
+            // 
+            this.Prod_CodigoBarras.HeaderText = "Codigo";
+            this.Prod_CodigoBarras.MinimumWidth = 6;
+            this.Prod_CodigoBarras.Name = "Prod_CodigoBarras";
+            this.Prod_CodigoBarras.ReadOnly = true;
+            this.Prod_CodigoBarras.Width = 90;
+            // 
+            // Prod_Nombre
+            // 
+            this.Prod_Nombre.HeaderText = "Producto";
+            this.Prod_Nombre.MinimumWidth = 6;
+            this.Prod_Nombre.Name = "Prod_Nombre";
+            this.Prod_Nombre.ReadOnly = true;
+            this.Prod_Nombre.Width = 180;
+            // 
+            // Prod_Cantidad
+            // 
+            this.Prod_Cantidad.HeaderText = "Cantidad";
+            this.Prod_Cantidad.MinimumWidth = 6;
+            this.Prod_Cantidad.Name = "Prod_Cantidad";
+            this.Prod_Cantidad.ReadOnly = true;
+            this.Prod_Cantidad.Width = 70;
+            // 
+            // Prod_PrecioVenta
+            // 
+            this.Prod_PrecioVenta.HeaderText = "Precio";
+            this.Prod_PrecioVenta.MinimumWidth = 6;
+            this.Prod_PrecioVenta.Name = "Prod_PrecioVenta";
+            this.Prod_PrecioVenta.ReadOnly = true;
+            this.Prod_PrecioVenta.Width = 110;
+            // 
+            // Prod_Subtotal
+            // 
+            this.Prod_Subtotal.HeaderText = "Subtotal";
+            this.Prod_Subtotal.MinimumWidth = 6;
+            this.Prod_Subtotal.Name = "Prod_Subtotal";
+            this.Prod_Subtotal.ReadOnly = true;
+            this.Prod_Subtotal.Width = 120;
+            // 
+            // Prod_Itbis
+            // 
+            this.Prod_Itbis.HeaderText = "ITBIS";
+            this.Prod_Itbis.MinimumWidth = 6;
+            this.Prod_Itbis.Name = "Prod_Itbis";
+            this.Prod_Itbis.ReadOnly = true;
+            this.Prod_Itbis.Width = 125;
+            // 
+            // Prod_Total
+            // 
+            this.Prod_Total.HeaderText = "Total";
+            this.Prod_Total.MinimumWidth = 6;
+            this.Prod_Total.Name = "Prod_Total";
+            this.Prod_Total.ReadOnly = true;
+            this.Prod_Total.Width = 125;
             // 
             // txtRegistrarVenta
             // 
             this.txtRegistrarVenta.AutoSize = true;
             this.txtRegistrarVenta.BackColor = System.Drawing.Color.Transparent;
             this.txtRegistrarVenta.Font = new System.Drawing.Font("Roboto Mono", 12.75F, System.Drawing.FontStyle.Bold);
-            this.txtRegistrarVenta.Location = new System.Drawing.Point(30, 16);
+            this.txtRegistrarVenta.Location = new System.Drawing.Point(40, 20);
+            this.txtRegistrarVenta.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.txtRegistrarVenta.Name = "txtRegistrarVenta";
-            this.txtRegistrarVenta.Size = new System.Drawing.Size(160, 23);
+            this.txtRegistrarVenta.Size = new System.Drawing.Size(208, 29);
             this.txtRegistrarVenta.TabIndex = 98;
             this.txtRegistrarVenta.Text = "Registrar Venta";
             // 
@@ -159,9 +229,10 @@
             this.txtInfoVenta.AutoSize = true;
             this.txtInfoVenta.BackColor = System.Drawing.Color.Transparent;
             this.txtInfoVenta.Font = new System.Drawing.Font("Roboto Mono", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtInfoVenta.Location = new System.Drawing.Point(32, 51);
+            this.txtInfoVenta.Location = new System.Drawing.Point(43, 63);
+            this.txtInfoVenta.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.txtInfoVenta.Name = "txtInfoVenta";
-            this.txtInfoVenta.Size = new System.Drawing.Size(126, 16);
+            this.txtInfoVenta.Size = new System.Drawing.Size(162, 20);
             this.txtInfoVenta.TabIndex = 91;
             this.txtInfoVenta.Text = "Información Venta";
             // 
@@ -170,9 +241,10 @@
             this.txtNombreCompleto.AutoSize = true;
             this.txtNombreCompleto.BackColor = System.Drawing.Color.Transparent;
             this.txtNombreCompleto.Font = new System.Drawing.Font("Roboto Mono", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtNombreCompleto.Location = new System.Drawing.Point(254, 71);
+            this.txtNombreCompleto.Location = new System.Drawing.Point(339, 87);
+            this.txtNombreCompleto.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.txtNombreCompleto.Name = "txtNombreCompleto";
-            this.txtNombreCompleto.Size = new System.Drawing.Size(112, 16);
+            this.txtNombreCompleto.Size = new System.Drawing.Size(144, 20);
             this.txtNombreCompleto.TabIndex = 110;
             this.txtNombreCompleto.Text = "Nombre Completo";
             // 
@@ -181,18 +253,20 @@
             this.txtPrecio.AutoSize = true;
             this.txtPrecio.BackColor = System.Drawing.Color.Transparent;
             this.txtPrecio.Font = new System.Drawing.Font("Roboto Mono", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPrecio.Location = new System.Drawing.Point(445, 118);
+            this.txtPrecio.Location = new System.Drawing.Point(593, 145);
+            this.txtPrecio.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.txtPrecio.Name = "txtPrecio";
-            this.txtPrecio.Size = new System.Drawing.Size(49, 16);
+            this.txtPrecio.Size = new System.Drawing.Size(63, 20);
             this.txtPrecio.TabIndex = 112;
             this.txtPrecio.Text = "Precio";
             // 
             // boxPrecio
             // 
             this.boxPrecio.Font = new System.Drawing.Font("Roboto Mono", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.boxPrecio.Location = new System.Drawing.Point(448, 134);
+            this.boxPrecio.Location = new System.Drawing.Point(597, 165);
+            this.boxPrecio.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.boxPrecio.Name = "boxPrecio";
-            this.boxPrecio.Size = new System.Drawing.Size(111, 23);
+            this.boxPrecio.Size = new System.Drawing.Size(147, 27);
             this.boxPrecio.TabIndex = 111;
             // 
             // txtProducto
@@ -200,18 +274,20 @@
             this.txtProducto.AutoSize = true;
             this.txtProducto.BackColor = System.Drawing.Color.Transparent;
             this.txtProducto.Font = new System.Drawing.Font("Roboto Mono", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtProducto.Location = new System.Drawing.Point(230, 118);
+            this.txtProducto.Location = new System.Drawing.Point(307, 145);
+            this.txtProducto.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.txtProducto.Name = "txtProducto";
-            this.txtProducto.Size = new System.Drawing.Size(63, 16);
+            this.txtProducto.Size = new System.Drawing.Size(81, 20);
             this.txtProducto.TabIndex = 114;
             this.txtProducto.Text = "Producto";
             // 
             // boxProducto
             // 
             this.boxProducto.Font = new System.Drawing.Font("Roboto Mono", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.boxProducto.Location = new System.Drawing.Point(230, 134);
+            this.boxProducto.Location = new System.Drawing.Point(307, 165);
+            this.boxProducto.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.boxProducto.Name = "boxProducto";
-            this.boxProducto.Size = new System.Drawing.Size(194, 23);
+            this.boxProducto.Size = new System.Drawing.Size(257, 27);
             this.boxProducto.TabIndex = 113;
             // 
             // txtCodProducto
@@ -219,18 +295,20 @@
             this.txtCodProducto.AutoSize = true;
             this.txtCodProducto.BackColor = System.Drawing.Color.Transparent;
             this.txtCodProducto.Font = new System.Drawing.Font("Roboto Mono", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCodProducto.Location = new System.Drawing.Point(32, 118);
+            this.txtCodProducto.Location = new System.Drawing.Point(43, 145);
+            this.txtCodProducto.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.txtCodProducto.Name = "txtCodProducto";
-            this.txtCodProducto.Size = new System.Drawing.Size(98, 16);
+            this.txtCodProducto.Size = new System.Drawing.Size(126, 20);
             this.txtCodProducto.TabIndex = 116;
             this.txtCodProducto.Text = "Cod. Producto";
             // 
             // boxCodProducto
             // 
             this.boxCodProducto.Font = new System.Drawing.Font("Roboto Mono", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.boxCodProducto.Location = new System.Drawing.Point(32, 134);
+            this.boxCodProducto.Location = new System.Drawing.Point(43, 165);
+            this.boxCodProducto.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.boxCodProducto.Name = "boxCodProducto";
-            this.boxCodProducto.Size = new System.Drawing.Size(143, 23);
+            this.boxCodProducto.Size = new System.Drawing.Size(189, 27);
             this.boxCodProducto.TabIndex = 115;
             // 
             // txtStockActual
@@ -238,18 +316,20 @@
             this.txtStockActual.AutoSize = true;
             this.txtStockActual.BackColor = System.Drawing.Color.Transparent;
             this.txtStockActual.Font = new System.Drawing.Font("Roboto Mono", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtStockActual.Location = new System.Drawing.Point(573, 118);
+            this.txtStockActual.Location = new System.Drawing.Point(764, 145);
+            this.txtStockActual.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.txtStockActual.Name = "txtStockActual";
-            this.txtStockActual.Size = new System.Drawing.Size(91, 16);
+            this.txtStockActual.Size = new System.Drawing.Size(117, 20);
             this.txtStockActual.TabIndex = 119;
             this.txtStockActual.Text = "Stock Actual";
             // 
             // boxStockActual
             // 
             this.boxStockActual.Font = new System.Drawing.Font("Roboto Mono", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.boxStockActual.Location = new System.Drawing.Point(576, 134);
+            this.boxStockActual.Location = new System.Drawing.Point(768, 165);
+            this.boxStockActual.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.boxStockActual.Name = "boxStockActual";
-            this.boxStockActual.Size = new System.Drawing.Size(106, 23);
+            this.boxStockActual.Size = new System.Drawing.Size(140, 27);
             this.boxStockActual.TabIndex = 118;
             // 
             // txtCantidad
@@ -257,18 +337,20 @@
             this.txtCantidad.AutoSize = true;
             this.txtCantidad.BackColor = System.Drawing.Color.Transparent;
             this.txtCantidad.Font = new System.Drawing.Font("Roboto Mono", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCantidad.Location = new System.Drawing.Point(693, 118);
+            this.txtCantidad.Location = new System.Drawing.Point(924, 145);
+            this.txtCantidad.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.txtCantidad.Name = "txtCantidad";
-            this.txtCantidad.Size = new System.Drawing.Size(63, 16);
+            this.txtCantidad.Size = new System.Drawing.Size(81, 20);
             this.txtCantidad.TabIndex = 121;
             this.txtCantidad.Text = "Cantidad";
             // 
             // boxCantidad
             // 
             this.boxCantidad.Font = new System.Drawing.Font("Roboto Mono", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.boxCantidad.Location = new System.Drawing.Point(696, 134);
+            this.boxCantidad.Location = new System.Drawing.Point(928, 165);
+            this.boxCantidad.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.boxCantidad.Name = "boxCantidad";
-            this.boxCantidad.Size = new System.Drawing.Size(60, 23);
+            this.boxCantidad.Size = new System.Drawing.Size(80, 27);
             this.boxCantidad.TabIndex = 122;
             // 
             // txtItbis
@@ -276,9 +358,10 @@
             this.txtItbis.AutoSize = true;
             this.txtItbis.BackColor = System.Drawing.Color.Transparent;
             this.txtItbis.Font = new System.Drawing.Font("Roboto Mono", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtItbis.Location = new System.Drawing.Point(764, 118);
+            this.txtItbis.Location = new System.Drawing.Point(1019, 145);
+            this.txtItbis.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.txtItbis.Name = "txtItbis";
-            this.txtItbis.Size = new System.Drawing.Size(42, 16);
+            this.txtItbis.Size = new System.Drawing.Size(54, 20);
             this.txtItbis.TabIndex = 124;
             this.txtItbis.Text = "ITBIS";
             // 
@@ -286,9 +369,10 @@
             // 
             this.cboItbis.Font = new System.Drawing.Font("Roboto Mono", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboItbis.FormattingEnabled = true;
-            this.cboItbis.Location = new System.Drawing.Point(767, 133);
+            this.cboItbis.Location = new System.Drawing.Point(1023, 164);
+            this.cboItbis.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.cboItbis.Name = "cboItbis";
-            this.cboItbis.Size = new System.Drawing.Size(129, 24);
+            this.cboItbis.Size = new System.Drawing.Size(171, 28);
             this.cboItbis.TabIndex = 125;
             // 
             // txtDetalle
@@ -296,9 +380,10 @@
             this.txtDetalle.AutoSize = true;
             this.txtDetalle.BackColor = System.Drawing.Color.Transparent;
             this.txtDetalle.Font = new System.Drawing.Font("Roboto Mono", 12.75F, System.Drawing.FontStyle.Bold);
-            this.txtDetalle.Location = new System.Drawing.Point(31, 167);
+            this.txtDetalle.Location = new System.Drawing.Point(41, 206);
+            this.txtDetalle.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.txtDetalle.Name = "txtDetalle";
-            this.txtDetalle.Size = new System.Drawing.Size(80, 23);
+            this.txtDetalle.Size = new System.Drawing.Size(104, 29);
             this.txtDetalle.TabIndex = 126;
             this.txtDetalle.Text = "Detalle";
             // 
@@ -307,18 +392,20 @@
             this.txtTotalItbis.AutoSize = true;
             this.txtTotalItbis.BackColor = System.Drawing.Color.Transparent;
             this.txtTotalItbis.Font = new System.Drawing.Font("Roboto Mono", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTotalItbis.Location = new System.Drawing.Point(905, 162);
+            this.txtTotalItbis.Location = new System.Drawing.Point(1207, 199);
+            this.txtTotalItbis.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.txtTotalItbis.Name = "txtTotalItbis";
-            this.txtTotalItbis.Size = new System.Drawing.Size(91, 16);
+            this.txtTotalItbis.Size = new System.Drawing.Size(117, 20);
             this.txtTotalItbis.TabIndex = 128;
             this.txtTotalItbis.Text = "Total Itbis:";
             // 
             // boxTotalItbis
             // 
             this.boxTotalItbis.Font = new System.Drawing.Font("Roboto Mono", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.boxTotalItbis.Location = new System.Drawing.Point(905, 183);
+            this.boxTotalItbis.Location = new System.Drawing.Point(1207, 225);
+            this.boxTotalItbis.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.boxTotalItbis.Name = "boxTotalItbis";
-            this.boxTotalItbis.Size = new System.Drawing.Size(238, 23);
+            this.boxTotalItbis.Size = new System.Drawing.Size(316, 27);
             this.boxTotalItbis.TabIndex = 127;
             // 
             // txtTotalPagar
@@ -326,18 +413,20 @@
             this.txtTotalPagar.AutoSize = true;
             this.txtTotalPagar.BackColor = System.Drawing.Color.Transparent;
             this.txtTotalPagar.Font = new System.Drawing.Font("Roboto Mono", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTotalPagar.Location = new System.Drawing.Point(905, 211);
+            this.txtTotalPagar.Location = new System.Drawing.Point(1207, 260);
+            this.txtTotalPagar.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.txtTotalPagar.Name = "txtTotalPagar";
-            this.txtTotalPagar.Size = new System.Drawing.Size(105, 16);
+            this.txtTotalPagar.Size = new System.Drawing.Size(135, 20);
             this.txtTotalPagar.TabIndex = 130;
             this.txtTotalPagar.Text = "Total a Pagar:";
             // 
             // boxTotalPagar
             // 
             this.boxTotalPagar.Font = new System.Drawing.Font("Roboto Mono", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.boxTotalPagar.Location = new System.Drawing.Point(905, 232);
+            this.boxTotalPagar.Location = new System.Drawing.Point(1207, 286);
+            this.boxTotalPagar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.boxTotalPagar.Name = "boxTotalPagar";
-            this.boxTotalPagar.Size = new System.Drawing.Size(244, 23);
+            this.boxTotalPagar.Size = new System.Drawing.Size(324, 27);
             this.boxTotalPagar.TabIndex = 129;
             // 
             // txtCambio
@@ -345,18 +434,20 @@
             this.txtCambio.AutoSize = true;
             this.txtCambio.BackColor = System.Drawing.Color.Transparent;
             this.txtCambio.Font = new System.Drawing.Font("Roboto Mono", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCambio.Location = new System.Drawing.Point(905, 360);
+            this.txtCambio.Location = new System.Drawing.Point(1207, 443);
+            this.txtCambio.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.txtCambio.Name = "txtCambio";
-            this.txtCambio.Size = new System.Drawing.Size(56, 16);
+            this.txtCambio.Size = new System.Drawing.Size(72, 20);
             this.txtCambio.TabIndex = 134;
             this.txtCambio.Text = "Cambio:";
             // 
             // boxCambio
             // 
             this.boxCambio.Font = new System.Drawing.Font("Roboto Mono", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.boxCambio.Location = new System.Drawing.Point(905, 381);
+            this.boxCambio.Location = new System.Drawing.Point(1207, 469);
+            this.boxCambio.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.boxCambio.Name = "boxCambio";
-            this.boxCambio.Size = new System.Drawing.Size(244, 23);
+            this.boxCambio.Size = new System.Drawing.Size(324, 27);
             this.boxCambio.TabIndex = 133;
             // 
             // txtPagarCon
@@ -364,26 +455,29 @@
             this.txtPagarCon.AutoSize = true;
             this.txtPagarCon.BackColor = System.Drawing.Color.Transparent;
             this.txtPagarCon.Font = new System.Drawing.Font("Roboto Mono", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPagarCon.Location = new System.Drawing.Point(905, 260);
+            this.txtPagarCon.Location = new System.Drawing.Point(1207, 320);
+            this.txtPagarCon.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.txtPagarCon.Name = "txtPagarCon";
-            this.txtPagarCon.Size = new System.Drawing.Size(77, 16);
+            this.txtPagarCon.Size = new System.Drawing.Size(99, 20);
             this.txtPagarCon.TabIndex = 132;
             this.txtPagarCon.Text = "Pagar con:";
             // 
             // boxPagarCon
             // 
             this.boxPagarCon.Font = new System.Drawing.Font("Roboto Mono", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.boxPagarCon.Location = new System.Drawing.Point(905, 281);
+            this.boxPagarCon.Location = new System.Drawing.Point(1207, 346);
+            this.boxPagarCon.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.boxPagarCon.Name = "boxPagarCon";
-            this.boxPagarCon.Size = new System.Drawing.Size(244, 23);
+            this.boxPagarCon.Size = new System.Drawing.Size(324, 27);
             this.boxPagarCon.TabIndex = 131;
             // 
             // dateTimePicker
             // 
             this.dateTimePicker.Font = new System.Drawing.Font("Roboto Mono", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dateTimePicker.Location = new System.Drawing.Point(32, 90);
+            this.dateTimePicker.Location = new System.Drawing.Point(43, 111);
+            this.dateTimePicker.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dateTimePicker.Name = "dateTimePicker";
-            this.dateTimePicker.Size = new System.Drawing.Size(200, 23);
+            this.dateTimePicker.Size = new System.Drawing.Size(265, 27);
             this.dateTimePicker.TabIndex = 137;
             // 
             // btnBuscarCodProducto
@@ -396,9 +490,10 @@
             this.btnBuscarCodProducto.IconColor = System.Drawing.Color.Black;
             this.btnBuscarCodProducto.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnBuscarCodProducto.IconSize = 16;
-            this.btnBuscarCodProducto.Location = new System.Drawing.Point(184, 131);
+            this.btnBuscarCodProducto.Location = new System.Drawing.Point(245, 161);
+            this.btnBuscarCodProducto.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnBuscarCodProducto.Name = "btnBuscarCodProducto";
-            this.btnBuscarCodProducto.Size = new System.Drawing.Size(33, 28);
+            this.btnBuscarCodProducto.Size = new System.Drawing.Size(44, 34);
             this.btnBuscarCodProducto.TabIndex = 136;
             this.btnBuscarCodProducto.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnBuscarCodProducto.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -416,9 +511,10 @@
             this.btnGenerarVenta.IconFont = FontAwesome.Sharp.IconFont.Solid;
             this.btnGenerarVenta.IconSize = 30;
             this.btnGenerarVenta.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnGenerarVenta.Location = new System.Drawing.Point(905, 409);
+            this.btnGenerarVenta.Location = new System.Drawing.Point(1207, 503);
+            this.btnGenerarVenta.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnGenerarVenta.Name = "btnGenerarVenta";
-            this.btnGenerarVenta.Size = new System.Drawing.Size(244, 46);
+            this.btnGenerarVenta.Size = new System.Drawing.Size(325, 57);
             this.btnGenerarVenta.TabIndex = 135;
             this.btnGenerarVenta.Text = "Generar Venta";
             this.btnGenerarVenta.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -436,9 +532,10 @@
             this.btnAñadir.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnAñadir.IconSize = 30;
             this.btnAñadir.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnAñadir.Location = new System.Drawing.Point(905, 85);
+            this.btnAñadir.Location = new System.Drawing.Point(1207, 105);
+            this.btnAñadir.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnAñadir.Name = "btnAñadir";
-            this.btnAñadir.Size = new System.Drawing.Size(241, 72);
+            this.btnAñadir.Size = new System.Drawing.Size(321, 89);
             this.btnAñadir.TabIndex = 95;
             this.btnAñadir.Text = "Agregar";
             this.btnAñadir.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
@@ -456,9 +553,10 @@
             this.btnTotalizar.IconFont = FontAwesome.Sharp.IconFont.Solid;
             this.btnTotalizar.IconSize = 30;
             this.btnTotalizar.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnTotalizar.Location = new System.Drawing.Point(905, 309);
+            this.btnTotalizar.Location = new System.Drawing.Point(1207, 380);
+            this.btnTotalizar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnTotalizar.Name = "btnTotalizar";
-            this.btnTotalizar.Size = new System.Drawing.Size(244, 46);
+            this.btnTotalizar.Size = new System.Drawing.Size(325, 57);
             this.btnTotalizar.TabIndex = 138;
             this.btnTotalizar.Text = "Totalizar";
             this.btnTotalizar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -469,70 +567,17 @@
             // 
             this.cboCliente.Font = new System.Drawing.Font("Roboto Mono", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboCliente.FormattingEnabled = true;
-            this.cboCliente.Location = new System.Drawing.Point(257, 89);
+            this.cboCliente.Location = new System.Drawing.Point(343, 110);
+            this.cboCliente.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.cboCliente.Name = "cboCliente";
-            this.cboCliente.Size = new System.Drawing.Size(302, 24);
+            this.cboCliente.Size = new System.Drawing.Size(401, 28);
             this.cboCliente.TabIndex = 139;
-            // 
-            // btnEliminar
-            // 
-            this.btnEliminar.HeaderText = "";
-            this.btnEliminar.Name = "btnEliminar";
-            this.btnEliminar.ReadOnly = true;
-            this.btnEliminar.Width = 25;
-            // 
-            // Prod_CodigoBarras
-            // 
-            this.Prod_CodigoBarras.HeaderText = "Codigo";
-            this.Prod_CodigoBarras.Name = "Prod_CodigoBarras";
-            this.Prod_CodigoBarras.ReadOnly = true;
-            this.Prod_CodigoBarras.Width = 90;
-            // 
-            // Prod_Nombre
-            // 
-            this.Prod_Nombre.HeaderText = "Producto";
-            this.Prod_Nombre.Name = "Prod_Nombre";
-            this.Prod_Nombre.ReadOnly = true;
-            this.Prod_Nombre.Width = 180;
-            // 
-            // Prod_Cantidad
-            // 
-            this.Prod_Cantidad.HeaderText = "Cantidad";
-            this.Prod_Cantidad.Name = "Prod_Cantidad";
-            this.Prod_Cantidad.ReadOnly = true;
-            this.Prod_Cantidad.Width = 70;
-            // 
-            // Prod_PrecioVenta
-            // 
-            this.Prod_PrecioVenta.HeaderText = "Precio";
-            this.Prod_PrecioVenta.Name = "Prod_PrecioVenta";
-            this.Prod_PrecioVenta.ReadOnly = true;
-            this.Prod_PrecioVenta.Width = 110;
-            // 
-            // Prod_Subtotal
-            // 
-            this.Prod_Subtotal.HeaderText = "Subtotal";
-            this.Prod_Subtotal.Name = "Prod_Subtotal";
-            this.Prod_Subtotal.ReadOnly = true;
-            this.Prod_Subtotal.Width = 120;
-            // 
-            // Prod_Itbis
-            // 
-            this.Prod_Itbis.HeaderText = "ITBIS";
-            this.Prod_Itbis.Name = "Prod_Itbis";
-            this.Prod_Itbis.ReadOnly = true;
-            // 
-            // Prod_Total
-            // 
-            this.Prod_Total.HeaderText = "Total";
-            this.Prod_Total.Name = "Prod_Total";
-            this.Prod_Total.ReadOnly = true;
             // 
             // FormVentas
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1181, 473);
+            this.ClientSize = new System.Drawing.Size(1575, 582);
             this.Controls.Add(this.cboCliente);
             this.Controls.Add(this.btnTotalizar);
             this.Controls.Add(this.dateTimePicker);
@@ -568,6 +613,7 @@
             this.Controls.Add(this.txtInfoVenta);
             this.Controls.Add(this.label1);
             this.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "FormVentas";
             this.Text = "FormVentas";
             this.Load += new System.EventHandler(this.FormVentas_Load);

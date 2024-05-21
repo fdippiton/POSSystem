@@ -24,30 +24,30 @@ namespace POSSystem
 
         }
 
-  
-
+        // CLOSE FORM FUNCTION
         private void form_closing(object sender, FormClosingEventArgs e)
         {
-            boxDocumento.Text = string.Empty; // Limpiar los box
-            boxContrasena.Text = string.Empty;
-            this.Show(); // Mostrar la vista de Login
+            boxDocumento.Text = string.Empty; // Clean document box
+            boxContrasena.Text = string.Empty; // Clean password box
+            this.Show(); // Show LoginForm
         }
 
+        // LOGIN BTN
         private void IngresarBtn_Click(object sender, EventArgs e)
         {
             List<Usuario> TEST = new BL_Usuario().Listar();
 
-            // Se obtiene el usuario si existe
+            // Retrieve user if exists 
             Usuario oUsuario = new BL_Usuario().Listar().Where(u => u.Usu_Documento == boxDocumento.Text && u.Usu_Contrasena == boxContrasena.Text && u.Usu_Estatus == "A").FirstOrDefault();
 
             if (oUsuario != null)
             {
                 Inicio form = new Inicio(oUsuario);
 
-                form.Show(); // Mostrar la proxima ventana despues de iniciar sesion
-                this.Hide(); // Ocultar la ventana de inicio de sesion
+                form.Show(); // Show next winform after login 
+                this.Hide(); // Hide LoginForm 
 
-                form.FormClosing += form_closing;  // Cuando se cierre la vista de Inicio, se muestre la vista de Login
+                form.FormClosing += form_closing;  // Show LoginForm after close InicioForm 
             }
             else
             {
@@ -57,9 +57,10 @@ namespace POSSystem
 
         }
 
+        // CANCEL LOGIN FUNCTION
         private void CancelarBtn_Click(object sender, EventArgs e)
         {
-            this.Close();  // Para cerrar la ventana  
+            this.Close();  // Close form  
         }
     }
 }
