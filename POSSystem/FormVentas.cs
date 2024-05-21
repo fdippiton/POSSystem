@@ -27,9 +27,16 @@ namespace POSSystem
             InitializeComponent();
         }
 
+
         private void FormVentas_Load(object sender, EventArgs e)
         {
 
+            /* The above C# code is adding items to a ComboBox control named `cboItbis`. Two items are
+            being added, each represented by an instance of the `OpcionCombo` class. The first item has
+            a value of 0 and a text of "No aplicar ITBIS", while the second item has a value of 0.18
+            and a text of "Aplicar ITBIS". This code is likely setting up options for the user to
+            select whether or not to apply ITBIS (Impuesto sobre la Transferencia de Bienes
+            Industrializados y Servicios, */
             cboItbis.Items.Add(new OpcionCombo()
             {
                 Valor = 0,
@@ -67,6 +74,8 @@ namespace POSSystem
 
         }
 
+
+        /// This C# function searches for a product by its barcode and returns the found product.
         private Producto BuscarProductoPorCodigoBarras(string codigoBarras)
         {
             BL_Producto blProducto = new BL_Producto();
@@ -74,6 +83,7 @@ namespace POSSystem
 
             return productoEncontrado;
         }
+
 
         private void LimpiarCampos()
         {
@@ -87,10 +97,13 @@ namespace POSSystem
             boxPagarCon.Clear();
         }
 
+
+
+        /// The function btnBuscarCodProducto_Click searches for a product by barcode, displays its information
+        /// if found, and clears the fields if not found.
         private void btnBuscarCodProducto_Click(object sender, EventArgs e)
         {
             string codigoBarras = boxCodProducto.Text;
-
             Producto producto = BuscarProductoPorCodigoBarras(codigoBarras);
 
             if (producto != null)
@@ -106,9 +119,10 @@ namespace POSSystem
                 LimpiarCampos();
                 codigoBarras = null;
             }
-
         }
 
+        /** The function `btnAñadir_Click` adds a product to a DataGridView with validation checks for
+        various input fields.**/
         private void btnAñadir_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrWhiteSpace(boxCodProducto.Text))
@@ -186,11 +200,13 @@ namespace POSSystem
             });
                     ActualizarTotales();
                 }
-
                 LimpiarCampos();
             }
         }
 
+
+    /// The function `ActualizarTotales` calculates and updates the total ITBIS and total amount to pay
+    /// based on the values in a DataGridView.
         private void ActualizarTotales()
         {
             decimal totalItbis = 0;
@@ -204,6 +220,8 @@ namespace POSSystem
             boxTotalPagar.Text = Math.Round(totalAPagar, 2).ToString();
         }
 
+        /// This C# function removes a row from a DataGridView when a cell is clicked and updates total values
+        /// displayed in text boxes.
         private void dgvdata_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.ColumnIndex == 0 && e.RowIndex >= 0)
@@ -226,6 +244,8 @@ namespace POSSystem
             }
         }
 
+        /// The function dgvdata_CellPainting in C# is used to paint a recycle bin icon in the specified cell
+        /// of a DataGridView.
         private void dgvdata_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
         {
             if (e.ColumnIndex == 0 && e.RowIndex >= 0)
@@ -246,6 +266,9 @@ namespace POSSystem
             }
         }
 
+
+        /// The function calculates the change to be given back based on the amount paid and the total amount
+        /// to be paid.
         private void btnTotalizar_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrWhiteSpace(boxPagarCon.Text))
@@ -263,6 +286,9 @@ namespace POSSystem
             }
         }
 
+
+        /// The function `btnGenerarVenta_Click` generates a sale by collecting details of the products
+        /// sold and creating a sale object with associated client and user information.
         private void btnGenerarVenta_Click(object sender, EventArgs e)
         {
             BL_Venta bl_Venta = new BL_Venta();
@@ -305,13 +331,9 @@ namespace POSSystem
                 Ven_MontoTotal = Convert.ToDecimal(boxTotalPagar.Text),
             };
 
-            Console.WriteLine(venta);
-            Console.WriteLine(detallesVenta);
-
             if (string.IsNullOrWhiteSpace(boxTotalItbis.Text))
             {
                 MessageBox.Show("El campo total Itbis esta vacio.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
             }
             else if (string.IsNullOrWhiteSpace(boxTotalPagar.Text))
             {
@@ -341,7 +363,5 @@ namespace POSSystem
                 }
             }
         }
-
-
     }
 }

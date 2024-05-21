@@ -25,6 +25,8 @@ namespace POSSystem
             InitializeComponent();
         }
 
+
+         /// The function "CargarUsuarios" loads a list of users into a DataGridView in a C# application.
         private void CargarUsuarios()
         {
             BL_Usuario blUsuario = new BL_Usuario();
@@ -39,6 +41,9 @@ namespace POSSystem
             }
         }
 
+
+        /// The FormUsuarios_Load function initializes ComboBoxes with specific options and populates them with
+        /// data from lists, while also setting up filtering options for a DataGridView.
         private void FormUsuarios_Load(object sender, EventArgs e)
         {
             // Agrega un nuevo elemento al ComboBox cboestatus. Este nuevo elemento es una instancia de la clase OpcionCombo con el valor "A" y el texto "Activo"
@@ -160,7 +165,6 @@ namespace POSSystem
                     // Hubo un error al crear el usuario
                     MessageBox.Show("Error al crear el usuario.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
-
             }
             LimpiarCampos();
         }

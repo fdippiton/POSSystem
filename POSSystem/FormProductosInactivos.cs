@@ -16,7 +16,7 @@ namespace POSSystem
 {
     public partial class FormProductosInactivos : Form
     {
-        private bool seleccionado = true; // Cambiado a true
+        private bool seleccionado = true; 
         private int rowIndexSelected = -1;
 
         public FormProductosInactivos()
@@ -35,8 +35,6 @@ namespace POSSystem
             List<Producto> listaProductos = blProducto.ListarProductos("I"); // Asumiendo que existe un método ListarProductos que retorna una lista de productos
 
             dgvdata.Rows.Clear(); // Limpiar las filas existentes
-
-
 
             foreach (var producto in listaProductos)
             {
@@ -219,9 +217,7 @@ namespace POSSystem
                         MessageBox.Show("Error al eliminar el producto con ID: " + productoId, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
-            }
-            else
-            {
+            } else {
                 MessageBox.Show("No hay producto seleccionado para eliminar.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
@@ -240,17 +236,18 @@ namespace POSSystem
                 bool resultado = blProducto.VaciarRegistros();
 
                 // Verificar si los registros fueron eliminados correctamente
-                if (resultado)
-                {
+                if (resultado){
                     // Limpiar el DataGridView
                     dgvdata.Rows.Clear();
                     MessageBox.Show("Todos los registros han sido eliminados correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-                else
+                } else
                 {
                     // Hubo un error al vaciar los registros
                     MessageBox.Show("Error al vaciar los registros.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
+            } else {
+                // El usuario decidió no vaciar los registros
+                MessageBox.Show("La operación de vaciar los registros fue cancelada.", "Cancelado", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
     }

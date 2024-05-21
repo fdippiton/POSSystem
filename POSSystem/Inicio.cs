@@ -20,10 +20,11 @@ namespace POSSystem
         private static Form FormularioActivo = null;
 
 
-        // Se le pasa el usuario
+        /* The constructor is responsible for initializing an instance of the `Inicio` form. */
+        // The form recieve the current user 
         public Inicio(Usuario objusuario = null)
         {
-            // Si el usuario no existe
+            // If user doesn´t exist
             if (objusuario == null)
             {
                 usuarioActual = new Usuario()
@@ -31,24 +32,26 @@ namespace POSSystem
                     Usu_NombreCompleto = "Usuario Admin",
                     Usu_Id = 1
                 };
-
-       
             }
             else
             {
-                // Si el usuario existe se inicializa una nueva instancia de usuario
+                // If the user exist, a new user instance is initialized
                 usuarioActual = objusuario;
             }
             InitializeComponent();
-            
         }
+
 
         private void Inicio_Load(object sender, EventArgs e)
         {
-            // Se obtienen todos los permisos del usuario actual
+            // Obtener todos los permisos del usuario actual
             List<Permiso> ListaPermisos = new BL_Permiso().Listar(usuarioActual.Usu_Id);
 
             // En el menu solo se muestran los permisos que ese usuario tiene disponible 
+            /* This code snippet is iterating through each `IconMenuItem` in the `menu.Items`
+            collection. For each `IconMenuItem`, it checks if there is a corresponding permission in
+            the `ListaPermisos` list based on the `Per_Nombre` property matching the `Name` property
+            of the `IconMenuItem`. */
             foreach (IconMenuItem iconmenu in menu.Items)
             {
                 bool encontrado = ListaPermisos.Any(m => m.Per_Nombre == iconmenu.Name);
@@ -62,15 +65,15 @@ namespace POSSystem
             UsuarioActual.Text = usuarioActual.Usu_NombreCompleto;
         }
 
+
+        // SHOW CURRENT FORM BASED ON THE MENUITEM SELECTED
         // Mostrar el contenido segun ventana especifica del menu
         // Esto define una función llamada AbrirFormulario que toma dos parámetros: menu, que parece ser un elemento de menú, y formulario, que es un objeto de tipo Form
         private void AbrirFormulario(IconMenuItem menu, Form formulario)
         {
-
-
+            // Si el formulario es de tipo menuVentas, establece la propiedad NombreCompletoUsuario con el nombre completo del usuario actual
             if (formulario is FormVentas)
             {
-                // Si el formulario es de tipo menuVentas, establece la propiedad NombreCompletoUsuario con el nombre completo del usuario actual
                 ((FormVentas)formulario).UsuarioId = usuarioActual.Usu_Id;
             }
 
@@ -97,14 +100,14 @@ namespace POSSystem
 
             contenedor.Controls.Add(formulario); // Agrega el formulario al contenedor especificado (contenedor). Esto permite que el formulario se muestre dentro del contenedor.
             formulario.Show(); // Finalmente, muestra el formulario.
-
-         
         }
 
+        /// The menuUsuarios_Click function opens a FormUsuarios form when a menu item is clicked.
         private void menuUsuarios_Click(object sender, EventArgs e)
         {
             AbrirFormulario((IconMenuItem)sender, new FormUsuarios());
         }
+
 
         private void SubmenuCategoria_Click(object sender, EventArgs e)
         {
@@ -112,55 +115,66 @@ namespace POSSystem
             AbrirFormulario(menuMantenedor, new FormCategorias());
         }
 
+
         private void SubMenuProducto_Click(object sender, EventArgs e)
         {
             AbrirFormulario(menuMantenedor, new FormProductos());
         }
+
 
         private void menuClientes_Click(object sender, EventArgs e)
         {
             AbrirFormulario(menuClientes, new FormClientes());
         }
 
+
         private void SubmenuRegistrarVenta_Click(object sender, EventArgs e)
         {
             AbrirFormulario(menuVentas, new FormVentas());
         }
+
 
         private void SubmenuVerDetalleVenta_Click(object sender, EventArgs e)
         {
             AbrirFormulario(menuVentas, new FormDetalleVentas());
         }
 
+
         private void menuProveedores_Click(object sender, EventArgs e)
         {
             AbrirFormulario(menuProveedores, new FormProveedores());
         }
+
 
         private void SubmenuRegistrarCompra_Click(object sender, EventArgs e)
         {
             AbrirFormulario(menuCompras, new FormCompras());
         }
 
+
         private void SubmenuVerDetalleCompra_Click(object sender, EventArgs e)
         {
             AbrirFormulario(menuCompras, new FormDetalleCompras());
         }
+
 
         private void menuReportes_Click(object sender, EventArgs e)
         {
             AbrirFormulario(menuReportes, new FormReportes());
         }
 
+
         private void menuAcercaDe_Click(object sender, EventArgs e)
         {
             AbrirFormulario(menuAcercaDe, new FormAcercaDe());
         }
 
+
         private void SubMenuImprimirCodigo_Click(object sender, EventArgs e)
         {
             AbrirFormulario(menuMantenedor, new FormImprimirCodigos());
         }
+
 
         private void SubmenuProductosInactivos_Click(object sender, EventArgs e)
         {

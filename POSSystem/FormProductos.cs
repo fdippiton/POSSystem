@@ -21,6 +21,7 @@ namespace POSSystem
         public int indice_combo_Cat;
         private bool seleccionado = true; // Cambiado a true
         private int rowIndexSelected = -1;
+
         public FormProductos()
         {
             InitializeComponent();
@@ -68,8 +69,6 @@ namespace POSSystem
             List<Producto> listaProductos = blProducto.ListarProductos("A"); // Asumiendo que existe un método ListarProductos que retorna una lista de productos
 
             dgvdata.Rows.Clear(); // Limpiar las filas existentes
-
-
 
             foreach (var producto in listaProductos)
             {
